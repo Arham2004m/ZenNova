@@ -1,7 +1,21 @@
 /* eslint-disable */
 import React from 'react';
+import { getFrontend } from "@/lib/api";
 
-export default function Footer() {
+export default async function Footer() {
+  let copyright = "© 2026 All Rights Reserved.";
+  let phone = "+670 413 90 762";
+  let email = "support@zennova.com";
+  let address = "79 Sleepy Hollow St. Jamaica, New York 1432";
+  try {
+    const data = await getFrontend();
+const footer = data?.customization?.footerContent;
+const contact = data?.customization?.contactInfo;
+const copyright = footer?.copyright || "© 2026 All Rights Reserved.";
+const phone = contact?.phone || "+670 413 90 762";
+const email = contact?.email || "support@zennova.com";
+const address = contact?.address || "";
+  } catch {}
   return (
     <>
           <section className="tp-subscribe-area pt-70 pb-65 theme-bg p-relative z-index-1">
@@ -282,7 +296,7 @@ export default function Footer() {
                                     <div className="tp-footer-talk mb-20">
                                         <span>Got Questions? Call us</span>
                                         <h4>
-                                            <a href="tel:+670 413 90 762">+670 413 90 762</a>
+                                            <a href={`tel:${phone}`}>{phone}</a>
                                         </h4>
                                     </div>
                                     <div className="tp-footer-contact">
@@ -298,7 +312,7 @@ export default function Footer() {
                         </span>
                                             </div>
                                             <div className="tp-footer-contact-content">
-                                                <p><a href="m&#x61;&#x69;&#x6c;to&#58;s&#x75;&#x70;&#x70;&#111;r&#x74;&#x40;s&#x68;&#111;&#x66;&#121;&#46;&#x63;om">s&#x75;&#x70;&#x70;&#111;r&#x74;&#x40;s&#x68;&#111;&#x66;&#121;&#46;&#x63;om</a></p>
+                                               <p><a href={`mailto:${email}`}>{email}</a></p>
                                             </div>
                                         </div>
                                         <div className="tp-footer-contact-item d-flex align-items-start">
@@ -312,9 +326,9 @@ export default function Footer() {
                                             </div>
                                             <div className="tp-footer-contact-content">
                                                 <p>
-                                                    <a href="https://maps.google.com/?q=79 Sleepy Hollow St. Jamaica, New York 1432" target="_blank">
-                                    79 Sleepy Hollow St. Jamaica, New York 1432
-                                </a>
+                                                    <a href={`https://maps.google.com/?q=${address}`} target="_blank">
+  {address}
+</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -332,7 +346,7 @@ export default function Footer() {
                         <div className="row align-items-center">
                             <div className="col-md-6">
                                 <div className="tp-footer-copyright">
-                                    <div>© 2026 All Rights Reserved.</div>
+                                    <div>{copyright}</div>
                                 </div>
                             </div>
                             <div className="col-md-6">

@@ -1,7 +1,15 @@
 /* eslint-disable */
 import React from 'react';
+import { getFrontend } from "@/lib/api";
 
-export default function Header() {
+export default async function Header() {
+  let logoUrl = "/storage/logot.webp";
+  let navLinks: any[] = [];
+  try {
+    const data = await getFrontend();
+    logoUrl = data?.customization?.headerConfig?.logoUrl || data?.store?.logo || "/storage/logot.webp";
+    navLinks = data?.customization?.navLinks ?? [];
+  } catch {}
   return (
     <>
           <div className="back-to-top-wrapper">
@@ -26,7 +34,7 @@ export default function Header() {
                     <div className="offcanvas__logo logo">
                         <div className="logo">
                             <a href="/">
-                            <img src="/storage/logot.webp" data-bb-lazy="false" style={{"height":"40px"} as React.CSSProperties} loading="eager" alt="Zen Nova" />
+                            {logoUrl && <img src={logoUrl} data-bb-lazy="false" style={{ height: "40px" }} loading="eager" alt="Zen Nova" />}
                     </a>
                         </div>
 
@@ -277,7 +285,7 @@ export default function Header() {
                         <div className="col-xl-2 col-lg-2 col-md-4 col-6">
                             <div className="logo">
                                 <a href="/">
-                            <img src="/storage/logot.webp" data-bb-lazy="false" style={{"height":"40px"} as React.CSSProperties} loading="eager" alt="Zen Nova" />
+                           {logoUrl && <img src={logoUrl} data-bb-lazy="false" style={{ height: "40px" }} loading="eager" alt="Zen Nova" />}
                     </a>
                             </div>
 
@@ -750,8 +758,8 @@ export default function Header() {
                     <div className="col-xl-3 col-lg-3 col-md-3 col-6">
                         <div className="logo">
                             <a href="/">
-                            <img src="/storage/logot.webp" data-bb-lazy="false" style={{"height":"40px"} as React.CSSProperties} loading="eager" alt="Zen Nova" />
-                    </a>
+                            {logoUrl && <img src={logoUrl} data-bb-lazy="false" style={{ height: "40px" }} loading="eager" alt="Zen Nova" />}
+                            </a>
                         </div>
 
                     </div>

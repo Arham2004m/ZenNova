@@ -1,59 +1,8 @@
 /* eslint-disable */
 import React from "react";
 import { notFound } from "next/navigation";
+import { getProducts } from "@/lib/api";
 
-const PRODUCTS = [
-  {
-    id: 159,
-    slug: "zennova-shilajit-pure-himalayan-power-advanced-gold-grade-formula",
-    name: "Zennova Shilajit – Pure Himalayan Power (Advanced Gold Grade Formula)",
-    image: "/storage/whatsapp-image-2026-05-31-at-31116-am-600x600.jpeg",
-    price: 1299,
-    oldPrice: 1560,
-    category: "Body",
-    badge: "Hot",
-    rating: 5,
-    sku: "SF-2443-JLD5"
-  },
-  {
-    id: 150,
-    slug: "zennova-lungs-detox",
-    name: "Zennova Lungs Detox",
-    image: "/storage/whatsapp-image-2026-05-31-at-35910-am-600x600.jpeg",
-    price: 1130,
-    oldPrice: 1420,
-    category: "Body",
-    badge: "-20%",
-    rating: 5,
-    sku: "SF-2443-BWKP"
-  },
-  {
-    id: 148,
-    slug: "zennova-fat-burne",
-    name: "Zennova Fat Burne - Thermogenic formula",
-    image: "/storage/whatsapp-image-2026-05-31-at-40352-am-600x600.jpeg",
-    price: 1120,
-    oldPrice: 1360,
-    category: "Body",
-    badge: "-17%",
-    rating: 5,
-    sku: "SF-2443-HDD9"
-  },
-  {
-    id: 144,
-    slug: "zennova-ashwagandha-premium-stress-immune-support",
-    name: "Zennova Ashwagandha – Premium Stress & Immune Support",
-    image: "/storage/whatsapp-image-2026-05-31-at-42031-am-600x600.jpeg",
-    price: 600,
-    oldPrice: 800,
-    category: "Body",
-    badge: "-25%",
-    rating: 5,
-    sku: "SF-2443-RZBB"
-  }
-];
-
-const VALID_CATEGORIES = ["body", "face", "fitness", "fragrance", "hair", "weight-management", "all-supplements"];
 
 export default async function CategoryListing({
   params
@@ -64,22 +13,26 @@ export default async function CategoryListing({
   const { category } = resolvedParams;
   const normalizedCategory = category.toLowerCase();
 
-  if (!VALID_CATEGORIES.includes(normalizedCategory)) {
-    notFound();
-  }
+  const allProducts = await getProducts();
+  const apiCategories = [
+    ...new Set(allProducts.map((p: any) => p.category?.toLowerCase()).filter(Boolean)),
+  ] as string[];
 
   const isAll = normalizedCategory === "all-supplements";
 
-  // Filter products matching category name (e.g. "body" -> matches Body category)
+  if (!isAll && !apiCategories.includes(normalizedCategory)) {
+    notFound();
+  }
+
   const categoryTitle = isAll
     ? "All Supplements"
-    : normalizedCategory === "weight-management" 
-    ? "Weight Management" 
+    : normalizedCategory === "weight-management"
+    ? "Weight Management"
     : normalizedCategory.charAt(0).toUpperCase() + normalizedCategory.slice(1);
 
   const filteredProducts = isAll
-    ? PRODUCTS
-    : PRODUCTS.filter(p => p.category.toLowerCase() === normalizedCategory);
+    ? allProducts
+    : allProducts.filter((p: any) => p.category?.toLowerCase() === normalizedCategory);
 
   return (
     <main>
@@ -118,16 +71,16 @@ export default async function CategoryListing({
             </div>
           ) : (
             <div className="row">
-              {filteredProducts.map(product => (
+{filteredProducts.map((product: any) => (
                 <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40" key={product.id}>
                   <div className="tp-product-item transition-3 p-relative fix m-img bg-dark text-white rounded" style={{ border: "1px solid #222" }}>
                     <div className="tp-product-thumb p-relative fix">
                       <a href={`/products/${product.slug}`}>
-                        <img src={product.image} alt={product.name} className="w-100" style={{ objectFit: "cover" }} />
+<img src={(product as any).images?.[0]} alt={product.name} className="w-100" style={{ objectFit: "cover" }} />
                       </a>
-                      {product.badge && (
+                      {(product as any).isBestSeller && (
                         <div className="tp-product-badge">
-                          <span style={{ backgroundColor: "#AC2200" }}>{product.badge}</span>
+<span style={{ backgroundColor: "#AC2200" }}>Sale</span>
                         </div>
                       )}
                       <div className="tp-product-action">
@@ -146,7 +99,8 @@ export default async function CategoryListing({
                       </h3>
                       <div className="tp-product-price-wrapper mb-3">
                         <span className="tp-product-price new-price text-warning mr-10">₹{product.price}</span>
-                        <span className="tp-product-price old-price text-white-50"><del>₹{product.oldPrice}</del></span>
+                        <span className="tp-product-price old-price text-white-50"><del>₹{(product as any).compareAtPrice}</del>
+</span>
                       </div>
                       <div className="tp-product-add-cart-btn-large-wrapper">
                         <a 

@@ -1,10 +1,12 @@
 /* eslint-disable */
 import type { Metadata, Viewport } from "next";
+import { getFrontend } from "@/lib/api";
 import Script from "next/script";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Modals from "./components/Modals";
 import ClientLoader from "./ClientLoader";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Zen Nova Best Fitness Supplements",
@@ -19,11 +21,12 @@ export const viewport: Viewport = {
   userScalable: true,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  let primaryColor = "#f37324";
+  try {
+    const data = await getFrontend();
+    primaryColor = data?.customization?.brandColors?.primary ?? primaryColor;
+  } catch {}
   return (
     <html lang="en">
       <head>
