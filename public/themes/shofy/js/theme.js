@@ -224,9 +224,15 @@
                             var e = $(".tp-product-categories-slider");
                             if (e.length) {
                                 var t = e.data("items") || 5;
+                                var slideCount = e.find(".swiper-slide").length;
+                                var isSliderActive = slideCount > t;
                                 c(".tp-product-categories-slider", {
                                     slidesPerView: t,
-                                    loop: !1,
+                                    loop: isSliderActive,
+                                    autoplay: isSliderActive ? {
+                                        delay: 3000,
+                                        disableOnInteraction: false
+                                    } : false,
                                     observer: !0,
                                     spaceBetween: 20,
                                     breakpoints: {

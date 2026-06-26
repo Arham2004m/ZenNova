@@ -42,6 +42,233 @@ a {
   text-decoration: none;
 }
 
+.tp-product-modal:has(.zn-quick-preview) .modal-dialog {
+  --bs-modal-width: min(662px, calc(100vw - 32px));
+}
+
+.tp-product-modal:has(.zn-quick-preview) .modal-content {
+  background: #232323;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.zn-quick-preview {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+  min-height: 430px;
+  position: relative;
+}
+
+.zn-quick-preview__close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.62);
+  display: flex;
+  font-size: 32px;
+  height: 42px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  width: 42px;
+  z-index: 3;
+}
+
+.zn-quick-preview__close:hover {
+  color: #ffffff;
+}
+
+.zn-quick-preview__media {
+  align-items: center;
+  background: #101010;
+  display: flex;
+  justify-content: center;
+  min-height: 430px;
+  overflow: hidden;
+  position: relative;
+}
+
+.zn-quick-preview__media img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.zn-quick-preview__badge {
+  background: #ac2200;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+}
+
+.zn-quick-preview__body {
+  display: flex;
+  flex-direction: column;
+  padding: 42px 34px 30px;
+}
+
+.zn-quick-preview__category {
+  color: #21b66f;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.zn-quick-preview h3 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 18px;
+  padding-right: 24px;
+}
+
+.zn-quick-preview__price {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.zn-quick-preview__price > span:first-child {
+  color: #f2f2f2;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.zn-quick-preview__old-price {
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.zn-quick-preview__description {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.zn-quick-preview__stock {
+  color: #20b86f;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 26px;
+}
+
+.zn-quick-preview__quantity-label {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.zn-quick-preview__actions {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 130px minmax(0, 1fr);
+  margin-bottom: 24px;
+}
+
+.zn-quick-preview__quantity {
+  display: grid;
+  grid-template-columns: 38px 54px 38px;
+  height: 48px;
+}
+
+.zn-quick-preview__quantity button,
+.zn-quick-preview__quantity input {
+  background: #f4f4f4;
+  border: 0;
+  color: #1f2933;
+  font-size: 18px;
+  text-align: center;
+}
+
+.zn-quick-preview__quantity button {
+  color: #b8b8b8;
+  font-size: 22px;
+}
+
+.zn-quick-preview__quantity input {
+  font-weight: 600;
+  min-width: 0;
+}
+
+.zn-quick-preview__quantity input::-webkit-inner-spin-button,
+.zn-quick-preview__quantity input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.zn-quick-preview__cart {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  color: #ffc400;
+  font-size: 16px;
+  font-weight: 700;
+  height: 48px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.zn-quick-preview__cart:hover {
+  background: #ff6b00;
+  border-color: #ff6b00;
+  color: #ffffff;
+}
+
+.zn-quick-preview__details {
+  align-items: center;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  gap: 10px;
+  margin-top: auto;
+  text-decoration: underline;
+  width: fit-content;
+}
+
+.zn-quick-preview__details:hover {
+  color: #ff8a00;
+}
+
+@media (max-width: 767px) {
+  .zn-quick-preview {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .zn-quick-preview__media {
+    min-height: 260px;
+  }
+
+  .zn-quick-preview__body {
+    padding: 30px 24px 26px;
+  }
+
+  .zn-quick-preview h3 {
+    font-size: 24px;
+  }
+
+  .zn-quick-preview__actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

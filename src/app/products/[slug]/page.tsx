@@ -17,7 +17,7 @@ const PRODUCTS: Record<string, {
   "zennova-shilajit-pure-himalayan-power-advanced-gold-grade-formula": {
     id: 159,
     name: "Zennova Shilajit – Pure Himalayan Power (Advanced Gold Grade Formula)",
-    image: "/storage/whatsapp-image-2026-05-31-at-31116-am-600x600.jpeg",
+    image: "/storage/zennova-fat-burner.png",
     price: 1299,
     oldPrice: 1560,
     category: "Body",
@@ -29,7 +29,7 @@ const PRODUCTS: Record<string, {
   "zennova-lungs-detox": {
     id: 150,
     name: "Zennova Lungs Detox",
-    image: "/storage/whatsapp-image-2026-05-31-at-35910-am-600x600.jpeg",
+    image: "/storage/zennova-lungs-detox.png",
     price: 1130,
     oldPrice: 1420,
     category: "Body",
@@ -41,7 +41,7 @@ const PRODUCTS: Record<string, {
   "zennova-fat-burne": {
     id: 148,
     name: "Zennova Fat Burne - Thermogenic formula",
-    image: "/storage/whatsapp-image-2026-05-31-at-40352-am-600x600.jpeg",
+    image: "/storage/zennova-fat-burner.png",
     price: 1120,
     oldPrice: 1360,
     category: "Body",
@@ -53,7 +53,7 @@ const PRODUCTS: Record<string, {
   "zennova-ashwagandha-premium-stress-immune-support": {
     id: 144,
     name: "Zennova Ashwagandha – Premium Stress & Immune Support",
-    image: "/storage/whatsapp-image-2026-05-31-at-42031-am-600x600.jpeg",
+    image: "/storage/zennova-ashwagandha.png",
     price: 600,
     oldPrice: 800,
     category: "Body",

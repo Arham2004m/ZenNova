@@ -101,8 +101,8 @@ export default function Footer() {
                                 <div className="tp-footer-widget-content">
                                     <div className="tp-footer-logo">
                                         <a href="/">
-                    <img src="/storage/loader.png" data-bb-lazy="true" style={{"maxHeight":"50px"} as React.CSSProperties} loading="lazy" data-src="/storage/logot.webp" alt="Zen Nova" />
-                </a>
+                                            <img src="/storage/logot.webp" style={{"maxHeight":"50px"} as React.CSSProperties} loading="lazy" alt="Zen Nova" />
+                                        </a>
                                     </div>
                                     <div className="tp-footer-desc">
                                         Zennova is a leading brand that provides premium quality health supplements for healthy lifstyle.

@@ -289,17 +289,7 @@ export default function Header() {
                                     <div className="tp-header-search-box">
                                         <input type="search" name="q" placeholder="Search for Products..." autoComplete="off" />
                                     </div>
-                                    <div className="tp-header-search-category">
-                                        <div className="product-category-label">
-                                            <span>All Categories</span>
-                                            <svg className="icon  svg-icon-ti-ti-chevron-down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M6 9l6 6l6 -6" />
-</svg> </div>
-                                        <select name="categories[]" data-bb-toggle="init-categories-dropdown" data-url="/ajax/categories-dropdown" aria-label="Product categories">
-    <option value="">All Categories</option>
-</select>
-                                    </div>
+
                                     <div className="tp-header-search-btn">
                                         <button type="submit" title="Search">
                 <svg className="icon  svg-icon-ti-ti-search"
@@ -615,89 +605,7 @@ export default function Header() {
                             </a>
 
                                                     </li>
-                                                    <li className="">
-                                                        <a href="/password/reset" title="Forgot Password">
-                <svg className="icon me-1 svg-icon-ti-ti-password-user"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M12 17v4" />
-  <path d="M10 20l4 -2" />
-  <path d="M10 18l4 2" />
-  <path d="M5 17v4" />
-  <path d="M3 20l4 -2" />
-  <path d="M3 18l4 2" />
-  <path d="M19 17v4" />
-  <path d="M17 20l4 -2" />
-  <path d="M17 18l4 2" />
-  <path d="M9 6a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-  <path d="M7 14a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2" />
-</svg>
 
-                Forgot Password
-
-                            </a>
-
-                                                    </li>
-                                                    <li className="">
-                                                        <a href="/404" title="404 Error">
-                <svg className="icon me-1 svg-icon-ti-ti-error-404"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M3 8v3a1 1 0 0 0 1 1h3" />
-  <path d="M7 8v8" />
-  <path d="M17 8v3a1 1 0 0 0 1 1h3" />
-  <path d="M21 8v8" />
-  <path d="M10 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0 -4 0" />
-</svg>
-
-                404 Error
-
-                            </a>
-
-                                                    </li>
-                                                    <li className="">
-                                                        <a href="/coming-soon" title="Coming Soon">
-                <svg className="icon me-1 svg-icon-ti-ti-news-off"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M16 6h3a1 1 0 0 1 1 1v9m-.606 3.435a2 2 0 0 1 -3.394 -1.435v-2m0 -4v-7a1 1 0 0 0 -1 -1h-7m-3.735 .321a1 1 0 0 0 -.265 .679v12a3 3 0 0 0 3 3h11" />
-  <path d="M8 12h4" />
-  <path d="M8 16h4" />
-  <path d="M3 3l18 18" />
-</svg>
-
-                Coming Soon
-
-                            </a>
-
-                                                    </li>
                                                 </ul>
 
                                             </li>
@@ -955,89 +863,7 @@ export default function Header() {
                             </a>
 
                                             </li>
-                                            <li className="">
-                                                <a href="/password/reset" title="Forgot Password">
-                <svg className="icon me-1 svg-icon-ti-ti-password-user"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M12 17v4" />
-  <path d="M10 20l4 -2" />
-  <path d="M10 18l4 2" />
-  <path d="M5 17v4" />
-  <path d="M3 20l4 -2" />
-  <path d="M3 18l4 2" />
-  <path d="M19 17v4" />
-  <path d="M17 20l4 -2" />
-  <path d="M17 18l4 2" />
-  <path d="M9 6a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-  <path d="M7 14a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2" />
-</svg>
 
-                Forgot Password
-
-                            </a>
-
-                                            </li>
-                                            <li className="">
-                                                <a href="/404" title="404 Error">
-                <svg className="icon me-1 svg-icon-ti-ti-error-404"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M3 8v3a1 1 0 0 0 1 1h3" />
-  <path d="M7 8v8" />
-  <path d="M17 8v3a1 1 0 0 0 1 1h3" />
-  <path d="M21 8v8" />
-  <path d="M10 10v4a2 2 0 1 0 4 0v-4a2 2 0 1 0 -4 0" />
-</svg>
-
-                404 Error
-
-                            </a>
-
-                                            </li>
-                                            <li className="">
-                                                <a href="/coming-soon" title="Coming Soon">
-                <svg className="icon me-1 svg-icon-ti-ti-news-off"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M16 6h3a1 1 0 0 1 1 1v9m-.606 3.435a2 2 0 0 1 -3.394 -1.435v-2m0 -4v-7a1 1 0 0 0 -1 -1h-7m-3.735 .321a1 1 0 0 0 -.265 .679v12a3 3 0 0 0 3 3h11" />
-  <path d="M8 12h4" />
-  <path d="M8 16h4" />
-  <path d="M3 3l18 18" />
-</svg>
-
-                Coming Soon
-
-                            </a>
-
-                                            </li>
                                         </ul>
 
                                     </li>

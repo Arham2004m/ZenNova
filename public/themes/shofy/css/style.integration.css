@@ -411,3 +411,24 @@ li {
         transform: translate3d(-50%, 0, 0);
     }
 }
+
+/* Fix hero slider banner images coverage and prevent stretching */
+.tp-slider-area .tp-slider-thumb img {
+    width: 100% !important;
+    height: 510px !important;
+    object-fit: cover !important;
+}
+
+@media (max-width: 767px) {
+    .tp-slider-area .tp-slider-thumb img {
+        height: auto !important;
+    }
+}
+
+/* Fix header search layout when categories select dropdown is removed */
+.tp-header-search-box {
+    width: 100% !important;
+}
+.tp-header-search-box input {
+    padding-right: 75px !important;
+}

@@ -101,7 +101,7 @@ export default function RootLayout({
         <Script src="/themes/shofy/plugins/swiper/swiper-bundle.js?v=1.3.4" strategy="afterInteractive" />
         <Script src="/vendor/core/plugins/ecommerce/libraries/slick/slick.min.js" strategy="afterInteractive" />
         <Script src="/themes/shofy/js/countdown.js" strategy="afterInteractive" />
-        <Script src="/themes/shofy/js/theme.js?v=1.3.4" strategy="afterInteractive" />
+        <Script src="/themes/shofy/js/theme.js?v=1.3.5" strategy="afterInteractive" />
         <Script src="/vendor/core/core/js-validation/js/js-validation.js?v=1.0.1" strategy="afterInteractive" />
         <Script src="/vendor/core/plugins/ecommerce/libraries/lightgallery/js/lightgallery.min.js" strategy="afterInteractive" />
         <Script src="/vendor/core/packages/theme/plugins/lazyload.min.js?v=1.3.4" strategy="afterInteractive" />
