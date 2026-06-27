@@ -291,6 +291,22 @@ export default function HomeClient({ products, storeData }: Props) {
           </div>
         </section>
 
+        {/* Announcement Bar */}
+        <div className="zn-announcement-bar-wrapper">
+          <div className="zn-announcement-bar-content">
+            <div className="zn-announcement-bar-item">
+              <span>🎁 Buy 1 Get 1 Free on selected summer apparel!</span>
+              <span>🔥 FLASH SALE: 20% OFF all electronics! Use code: FLASH20</span>
+              <span>🚚 Free shipping on all orders over $50! Shop Now</span>
+            </div>
+            <div className="zn-announcement-bar-item">
+              <span>🎁 Buy 1 Get 1 Free on selected summer apparel!</span>
+              <span>🔥 FLASH SALE: 20% OFF all electronics! Use code: FLASH20</span>
+              <span>🚚 Free shipping on all orders over $50! Shop Now</span>
+            </div>
+          </div>
+        </div>
+
         <section className="tp-category-area pt-30 pb-30">
           <div className="container">
             <div className="tp-product-categories-slider swiper-container">

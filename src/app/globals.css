@@ -1082,3 +1082,60 @@ a {
   border-color: #f37324;
   color: #f37324;
 }
+
+/* ==========================================================================
+   Announcement Bar (Ticker Marquee)
+   ========================================================================== */
+
+.zn-announcement-bar-wrapper {
+  background-color: #ff0000;
+  color: #ffffff;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 12px 0;
+  display: flex;
+  width: 100%;
+}
+
+.zn-announcement-bar-content {
+  display: flex;
+  animation: znMarquee 25s linear infinite;
+}
+
+.zn-announcement-bar-item {
+  display: flex;
+  flex-shrink: 0;
+  white-space: nowrap;
+  gap: 80px;
+  padding-right: 80px;
+}
+
+.zn-announcement-bar-item span {
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+@keyframes znMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .zn-announcement-bar-wrapper {
+    padding: 10px 0;
+  }
+  .zn-announcement-bar-item span {
+    font-size: 12px;
+  }
+  .zn-announcement-bar-item {
+    gap: 40px;
+    padding-right: 40px;
+  }
+}
