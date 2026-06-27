@@ -52,6 +52,20 @@ export default function ProductCard({
     .filter(Boolean)
     .join(" ");
 
+  const cardClass = [
+    "tp-product-item",
+    "zn-product-card",
+    "transition-3",
+    "p-relative",
+    "fix",
+    "m-img",
+    shopListView ? "zn-shop-list-card" : "h-100",
+    shopLayout && !shopListView ? "zn-shop-product-card" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <div className={cardClass}>
       <div
@@ -116,7 +130,11 @@ export default function ProductCard({
 
         {shopLayout && shopListView && (
           <div className="zn-shop-list-card__cart">
+<<<<<<< Updated upstream
             <AddToCartButton product={product} variant="static" label={cartLabel} />
+=======
+            <AddToCartButton product={product} variant="static" />
+>>>>>>> Stashed changes
           </div>
         )}
       </div>
@@ -129,13 +147,21 @@ export default function ProductCard({
 
       {shopLayout && !shopListView && (
         <div className="zn-product-card__footer zn-shop-product-card__footer">
+<<<<<<< Updated upstream
           <AddToCartButton product={product} variant="static" label={cartLabel} />
+=======
+          <AddToCartButton product={product} variant="static" />
+>>>>>>> Stashed changes
         </div>
       )}
 
       {!shopLayout && (
         <div className="zn-product-card__footer">
+<<<<<<< Updated upstream
           <AddToCartButton product={product} variant="static" label={cartLabel} />
+=======
+          <AddToCartButton product={product} variant="static" />
+>>>>>>> Stashed changes
         </div>
       )}
     </div>
