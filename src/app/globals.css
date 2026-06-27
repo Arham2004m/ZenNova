@@ -1139,3 +1139,54 @@ a {
     padding-right: 40px;
   }
 }
+
+/* ==========================================================================
+   About Us Page Styling
+   ========================================================================== */
+
+.zn-about-content-rich h1 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.zn-about-content-rich p {
+  color: #a1a1aa;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.zn-about-content-rich p:last-child {
+  margin-bottom: 0;
+}
+
+.zn-about-content-rich strong {
+  color: #f37324;
+  font-weight: 600;
+}
+
+.zn-map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.zn-map-wrapper iframe {
+  filter: grayscale(1) invert(0.92) contrast(1.1) brightness(0.9);
+}
+
+@media (max-width: 767px) {
+  .zn-about-content-rich h1 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .zn-about-content-rich p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .zn-map-wrapper iframe {
+    height: 300px !important;
+  }
+}
