@@ -347,17 +347,7 @@ export default async function Header() {
 
                                 <div className="tp-header-action d-flex align-items-center ml-50">
 
-                                    <div className="tp-header-action-item tp-header-action-item-compare">
-                                        <a href="/compare" className="tp-header-action-btn">
-                    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.8396 17.3319V3.71411" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M19.1556 13L15.0778 17.0967L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M4.91115 1.00056V14.6183" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M0.833496 5.09667L4.91127 1L8.98905 5.09667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span className="tp-header-action-badge" data-bb-value="compare-count">0</span>
-                </a>
-                                    </div>
+
                                     <div className="tp-header-action-item d-none d-lg-block tp-header-action-item-wishlist">
                                         <a href="/wishlist" className="tp-header-action-btn">
                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -883,17 +873,7 @@ export default async function Header() {
                     <div className="col-xl-3 col-lg-3 col-md-3 col-6">
                         <div className="tp-header-action d-flex align-items-center ml-50 justify-content-end">
 
-                            <div className="tp-header-action-item tp-header-action-item-compare">
-                                <a href="/compare" className="tp-header-action-btn">
-                    <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14.8396 17.3319V3.71411" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M19.1556 13L15.0778 17.0967L11 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M4.91115 1.00056V14.6183" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M0.833496 5.09667L4.91127 1L8.98905 5.09667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span className="tp-header-action-badge" data-bb-value="compare-count">0</span>
-                </a>
-                            </div>
+
                             <div className="tp-header-action-item d-none d-lg-block tp-header-action-item-wishlist">
                                 <a href="/wishlist" className="tp-header-action-btn">
                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
