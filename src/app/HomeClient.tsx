@@ -148,31 +148,27 @@ export default function HomeClient({ products, storeData }: Props) {
           },
         });
 
-        new (window as any).Swiper(".tp-blog-main-slider-active", {
-          slidesPerView: 3,
+        new (window as any).Swiper(".zn-reels-slider-active", {
+          slidesPerView: 4,
           spaceBetween: 20,
-          loop: true,
-          autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-          },
+          loop: false,
           navigation: {
-            nextEl: ".tp-blog-main-slider-button-next",
-            prevEl: ".tp-blog-main-slider-button-prev",
+            nextEl: ".zn-reels-slider-button-next",
+            prevEl: ".zn-reels-slider-button-prev",
           },
           pagination: {
-            el: ".tp-blog-main-slider-dot",
+            el: ".zn-reels-slider-dot",
             clickable: true,
             renderBullet: function (index: number, className: string) {
               return `<span class="${className}"><button>${index + 1}</button></span>`;
             },
           },
           breakpoints: {
-            1200: { slidesPerView: 3 },
-            992: { slidesPerView: 2 },
-            768: { slidesPerView: 2 },
-            576: { slidesPerView: 1 },
-            0: { slidesPerView: 1 },
+            1200: { slidesPerView: 4 },
+            992: { slidesPerView: 3 },
+            768: { slidesPerView: 2.5 },
+            576: { slidesPerView: 2 },
+            0: { slidesPerView: 1.2 },
           },
         });
 
@@ -511,86 +507,101 @@ export default function HomeClient({ products, storeData }: Props) {
 
         <div className="tp-product-banner-area pt-30 pb-30">
           <div className="container">
-            <img
-              src="/storage/whatsapp-image-2026-05-21-at-44038-pm.webp"
-              style={{ width: "100%" }}
-              loading="lazy"
-              alt="Certification"
-            />
+            <picture>
+              <source
+                srcSet="/storage/gemini-generated-image-4w8g5d4w8g5d4w8g-1.webp"
+                media="(min-width: 992px)"
+              />
+              <img
+                src="/storage/whatsapp-image-2026-05-21-at-44038-pm.webp"
+                style={{ width: "100%" }}
+                loading="lazy"
+                alt="Certification"
+              />
+            </picture>
           </div>
         </div>
 
+        {/* Reels / Social Reach Section */}
         <section className="tp-blog-area pt-50 pb-50">
           <div className="container">
             <div className="row align-items-center mb-40">
               <div className="col-xl-4 col-md-6">
                 <div className="tp-section-title-wrapper">
                   <h3 className="section-title tp-section-title">
-                    <span>Latest</span> News &amp; Offers
+                    <span>Our</span> Social Reach
                   </h3>
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col-xl-12">
-                <div className="tp-blog-main-slider">
-                  <div className="tp-blog-main-slider-active swiper-container">
+                <div className="zn-reels-slider">
+                  <div className="zn-reels-slider-active swiper-container">
                     <div className="swiper-wrapper">
-                      {[
-                        {
-                          href: "/blog/the-real-stories-of-crushing-fatigue-with-zennova-pure-himalayan-shilajit",
-                          img: "/storage/whatsapp-image-2026-05-21-at-43405-pm-1-420x270.webp",
-                          title:
-                            "The Real Stories of Crushing Fatigue with Zennova Pure Himalayan Shilajit",
-                          date: "May 21, 2026",
-                          excerpt:
-                            "We have all been there. It is 3:00 PM, you are staring at your laptop screen, and your brain feels...",
-                        },
-                        {
-                          href: "/blog/burn-fat-smarter-feel-stronger-every-day",
-                          img: "/storage/whatsapp-image-2026-05-21-at-43458-pm-1-420x270.webp",
-                          title: "Burn Fat Smarter, Feel Stronger Every Day",
-                          date: "May 21, 2026",
-                          excerpt:
-                            "Are you struggling with stubborn belly fat, low energy levels, or uncontrollable cravings? You're not alone...",
-                        },
-                        {
-                          href: "/blog/the-sleep-that-actually-makes-you-glow-why-zennova-sleepglow-is-the-transformation-youve-been-praying-for",
-                          img: "/storage/whatsapp-image-2026-05-21-at-44059-pm-420x270.webp",
-                          title:
-                            "Why Zennova SLEEPGlow Is the Transformation You've Been Praying For",
-                          date: "May 21, 2026",
-                          excerpt:
-                            "What if I told you there's a missing piece to your wellness puzzle that doesn't involve a prescription pad?...",
-                        },
-                      ].map((post) => (
-                        <div className="tp-blog-item mb-30 swiper-slide" key={post.href}>
-                          <div className="tp-blog-thumb p-relative fix">
-                            <a href={post.href}>
-                              <img
-                                src="/storage/loader.png"
-                                data-bb-lazy="true"
-                                loading="lazy"
-                                data-src={post.img}
-                                alt={post.title}
+                      {(storeData?.customization?.reelsSection?.reels ?? []).map((reel: any) => (
+                        <div className="swiper-slide h-auto" key={reel.id}>
+                          <div
+                            className="zn-reel-card"
+                            onMouseEnter={(e) => {
+                              const video = e.currentTarget.querySelector("video");
+                              if (video) video.play().catch(() => {});
+                            }}
+                            onMouseLeave={(e) => {
+                              const video = e.currentTarget.querySelector("video");
+                              if (video) video.pause();
+                            }}
+                            onClick={(e) => {
+                              const video = e.currentTarget.querySelector("video");
+                              if (video) {
+                                if (video.paused) {
+                                  video.play().catch(() => {});
+                                } else {
+                                  video.pause();
+                                }
+                              }
+                            }}
+                          >
+                            <div className="zn-reel-video-wrapper">
+                              <video
+                                src={reel.videoUrl}
+                                loop
+                                muted
+                                playsInline
+                                preload="metadata"
+                                className="zn-reel-video"
                               />
-                            </a>
-                            <div className="tp-blog-meta tp-blog-meta-date">
-                              <span>{post.date}</span>
+                              <div className="zn-reel-overlay">
+                                <div className="zn-reel-overlay-icon">
+                                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#ff6b00"/>
+                                  </svg>
+                                </div>
+                                <div className="zn-reel-overlay-text">
+                                  <h4 className="zn-reel-sub">{reel.sub}</h4>
+                                  <p className="zn-reel-title">{reel.title}</p>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                          <div className="tp-blog-content">
-                            <h3 className="tp-blog-title text-truncate">
-                              <a href={post.href} title={post.title}>
-                                {post.title}
-                              </a>
-                            </h3>
-                            <p>{post.excerpt}</p>
+                            <button className="zn-reel-btn">WATCH NOW</button>
                           </div>
                         </div>
                       ))}
                     </div>
                   </div>
+                  {/* Floating navigation buttons */}
+                  <button type="button" className="zn-reels-slider-button-prev">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                      <path d="M7 13L1 7L7 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <button type="button" className="zn-reels-slider-button-next">
+                    <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
+                      <path d="M1 13L7 7L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  {/* Dots pagination */}
+                  <div className="zn-reels-slider-dot tp-swiper-dot text-center mt-30" />
                 </div>
               </div>
             </div>

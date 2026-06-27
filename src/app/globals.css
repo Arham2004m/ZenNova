@@ -1995,3 +1995,180 @@ a {
     white-space: normal;
   }
 }
+
+/* ==========================================================================
+   Homepage Reels Section (Our Social Reach)
+   ========================================================================== */
+
+.zn-reels-slider {
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.zn-reel-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #111111;
+  border: 1px solid #252525;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.zn-reel-card:hover {
+  border-color: #ff6b00;
+  box-shadow: 0 12px 30px rgba(255, 107, 0, 0.18);
+  transform: translateY(-4px);
+}
+
+.zn-reel-video-wrapper {
+  position: relative;
+  aspect-ratio: 9/16;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.zn-reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay dark badge at the bottom of the video */
+.zn-reel-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(17, 17, 17, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.zn-reel-card:hover .zn-reel-overlay {
+  background: rgba(17, 17, 17, 0.95);
+}
+
+.zn-reel-overlay-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 107, 0, 0.15);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.zn-reel-overlay-text {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.zn-reel-sub {
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zn-reel-title {
+  color: #a1a1aa;
+  font-size: 11px;
+  line-height: 1.35;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zn-reel-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 14px 0;
+  text-align: center;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 100%;
+  border-top: 1px solid #252525;
+}
+
+.zn-reel-card:hover .zn-reel-btn {
+  background-color: #ff6b00;
+  color: #ffffff;
+}
+
+/* Floating Navigation Buttons */
+.zn-reels-slider-button-prev,
+.zn-reels-slider-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  color: #111111;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.zn-reels-slider-button-prev:hover,
+.zn-reels-slider-button-next:hover {
+  background-color: #ff6b00;
+  border-color: #ff6b00;
+  color: #ffffff;
+}
+
+.zn-reels-slider-button-prev {
+  left: -22px;
+}
+
+.zn-reels-slider-button-next {
+  right: -22px;
+}
+
+/* Hide navigation on touch devices, adjust positioning on smaller desktop */
+@media (max-width: 1200px) {
+  .zn-reels-slider-button-prev {
+    left: 2px;
+  }
+  .zn-reels-slider-button-next {
+    right: 2px;
+  }
+}
+
+@media (max-width: 767px) {
+  .zn-reels-slider-button-prev,
+  .zn-reels-slider-button-next {
+    display: none !important;
+  }
+  .zn-reels-slider {
+    padding: 0;
+  }
+}
