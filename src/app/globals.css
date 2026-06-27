@@ -351,16 +351,111 @@ a {
   display: inline-block;
 }
 
+/* Card Countdown styling */
 .zn-product-card__countdown {
-  padding: 0 20px 12px;
+  padding: 0 20px 20px;
 }
 
 .zn-product-card__countdown .tp-product-countdown-inner ul {
   display: flex;
   justify-content: center;
+  gap: 8px;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.zn-product-card__countdown .tp-product-countdown-inner ul li {
+  background-color: #121212 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 6px !important;
+  min-width: 52px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.zn-product-card__countdown .tp-product-countdown-inner ul li:not(:last-child):after,
+.zn-product-card__countdown .tp-product-countdown-inner ul li:not(:last-child):before {
+  display: none !important;
+}
+
+.zn-product-card__countdown .tp-product-countdown-inner ul li span {
+  display: block;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.1 !important;
+  margin-bottom: 2px !important;
+}
+
+.zn-product-card__countdown .tp-product-countdown-inner ul li {
+  color: var(--primary-color, #f37324) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px;
+}
+
+/* Reordering/Layout for countdown cards */
+.zn-has-countdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.zn-has-countdown .zn-product-card__thumb {
+  order: 1;
+}
+
+.zn-has-countdown .zn-product-card__content {
+  order: 2;
+  padding-bottom: 0px !important; /* reduce spacing below price to make room for timer */
+  flex: 1 1 auto;
+}
+
+.zn-has-countdown .zn-product-card__countdown {
+  order: 3;
+  padding: 10px 20px 15px !important; /* space above and below timer */
+}
+
+.zn-has-countdown .zn-product-card__footer {
+  order: 4;
+}
+
+/* Reduced price font-size slightly for countdown cards */
+.zn-has-countdown .tp-product-price.new-price {
+  font-size: 20px !important;
+}
+
+/* Mobile optimizations for countdown */
+@media (max-width: 767px) {
+  .zn-product-card__countdown {
+    padding: 10px 10px 10px !important;
+  }
+  .zn-product-card__countdown .tp-product-countdown-inner ul {
+    gap: 4px !important;
+  }
+  .zn-product-card__countdown .tp-product-countdown-inner ul li {
+    min-width: 40px !important;
+    height: 42px !important;
+  }
+  .zn-product-card__countdown .tp-product-countdown-inner ul li span {
+    font-size: 16px !important;
+  }
+  .zn-product-card__countdown .tp-product-countdown-inner ul li {
+    font-size: 8px !important;
+  }
+  .zn-has-countdown .zn-product-card__content {
+    padding: 10px 12px 0 !important;
+  }
+  .zn-has-countdown .tp-product-price.new-price {
+    font-size: 18px !important;
+  }
 }
 
 .zn-product-card__footer {

@@ -13,6 +13,18 @@ export default function DealOfTheDaySection({
   products,
   viewAllHref = "/products",
 }: Props) {
+  const [dealEndDate, setDealEndDate] = React.useState<Date | null>(null);
+
+  React.useEffect(() => {
+    // Set a target date of 2 days, 4 hours, 34 minutes, 21 seconds from mount
+    const target = new Date();
+    target.setDate(target.getDate() + 2);
+    target.setHours(target.getHours() + 4);
+    target.setMinutes(target.getMinutes() + 34);
+    target.setSeconds(target.getSeconds() + 21);
+    setDealEndDate(target);
+  }, []);
+
   return (
     <section className="tp-deal-area pt-50 pb-50 zn-deal-area">
       <div className="container">
@@ -34,7 +46,8 @@ export default function DealOfTheDaySection({
             <div className="col-xl-3 col-lg-4 col-sm-6 mb-30" key={product.id}>
               <ProductCard
                 product={product}
-                showCountdown={false}
+                showCountdown={!!dealEndDate}
+                countdownDate={dealEndDate || undefined}
                 badgeOverride={{ text: "Sale", className: "product-offer" }}
               />
             </div>

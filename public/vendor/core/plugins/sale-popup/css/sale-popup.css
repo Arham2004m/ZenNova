@@ -1,1 +1,605 @@
-No Content: https://aliceblue-nightingale-833852.hostingersite.com/vendor/core/plugins/sale-popup/css/sale-popup.css?v=1.2.1
+/* ==========================================================================
+   ZenNova Premium Sales Popup Styles
+   ========================================================================== */
+
+/* Main Wrapper */
+.sale-popup-container-wrap {
+  position: fixed;
+  bottom: 30px;
+  left: 20px;
+  max-width: 410px; /* Increased from 360px */
+  width: calc(100% - 40px);
+  background: rgba(18, 18, 18, 0.88); /* Premium deep dark glassmorphism */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Hide helper */
+.sale-popup-container-wrap.hidden {
+  display: none !important;
+}
+
+/* Design 2: Circular/rounded pill style */
+.sale-popup-container-wrap.des_2 {
+  border-radius: 80px;
+  padding-left: 6px;
+}
+
+.sale-popup-container-wrap.des_2 .sale-popup-thumb .js-sale-popup-a {
+  border-radius: 50%;
+}
+
+.sale-popup-container-wrap.des_2 a.pa {
+  top: 50%;
+  margin-top: -14px;
+}
+
+/* Flex Container */
+.sale-popup-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 12px 18px; /* Increased from 10px 14px */
+  width: 100%;
+}
+
+/* Product Thumbnail */
+.sale-popup-thumb {
+  flex: 0 0 auto;
+  margin-right: 14px;
+}
+
+.sale-popup-thumb .js-sale-popup-a {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 68px; /* Increased from 56px */
+  height: 68px; /* Increased from 56px */
+}
+
+.sale-popup-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info Section */
+.sale-popup-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-right: 40px; /* Increased from 32px to fit larger buttons */
+}
+
+/* Location/Buyer Metadata */
+.sale-popup-location {
+  display: block;
+  font-size: 13.5px; /* Increased from 12px */
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.sale-popup-location .js-sale-popup-location {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Product Title */
+.sale-popup-title {
+  display: block;
+  font-size: 14.5px; /* Increased from 13px */
+  font-weight: 600;
+  color: var(--primary-color, #f37324) !important;
+  text-decoration: none;
+  line-height: 1.35;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity 0.2s ease;
+}
+
+.sale-popup-title:hover {
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
+/* Metadata Row (Ago + Verified) */
+.sale-popup-ago {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px; /* Increased from 11px */
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.sale-popup-ago .sale-popup-time {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sale-popup-ago .sale-popup-verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #10b981; /* Premium green checkmark color */
+  font-weight: 500;
+}
+
+.sale-popup-ago svg {
+  color: #10b981;
+  width: 14.5px; /* Increased from 13px */
+  height: 14.5px; /* Increased from 13px */
+  flex-shrink: 0;
+}
+
+/* Close Button (a.pa / .sale-popup-close) */
+.sale-popup-container-wrap a.pa.sale-popup-close {
+  position: absolute !important;
+  right: 12px;
+  top: 12px;
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none !important;
+  width: 24px; /* Increased from 22px */
+  height: 24px; /* Increased from 22px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sale-popup-container-wrap a.pa.sale-popup-close:hover {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.sale-popup-container-wrap a.pa.sale-popup-close svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.5;
+}
+
+/* Quick View Button */
+.sale-popup-container-wrap a.pa.sale-popup-quick-view {
+  position: absolute !important;
+  right: 12px;
+  bottom: 12px; /* Adjusted spacing */
+  top: auto !important;
+  margin-top: 0 !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; /* Increased from 24px */
+  height: 28px; /* Increased from 24px */
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sale-popup-container-wrap a.pa.sale-popup-quick-view:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-color, #f37324);
+}
+
+.sale-popup-container-wrap a.pa.sale-popup-quick-view svg {
+  width: 16px; /* Increased from 14px */
+  height: 16px; /* Increased from 14px */
+  stroke-width: 2;
+}
+
+/* Responsive & Positioning Overrides */
+@media (max-width: 767px) {
+  .sale-popup-container-wrap {
+    bottom: 90px !important; /* Clear bottom menu bars on mobile devices */
+    left: 16px !important;
+    width: calc(100% - 32px) !important;
+    max-width: 420px !important; /* Increased from 380px */
+  }
+  
+  .sale-popup-info {
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sale-popup-thumb .js-sale-popup-a {
+    width: 56px;
+    height: 56px;
+  }
+  .sale-popup-title {
+    font-size: 13px;
+  }
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+.sales_animated {
+  animation-duration: 0.8s;
+  animation-fill-mode: both;
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slideInUp {
+  animation-name: slideInUp;
+}
+
+@keyframes slideOutDown {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+    visibility: hidden;
+  }
+}
+.slideOutDown {
+  animation-name: slideOutDown;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slideInLeft {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideOutLeft {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+    visibility: hidden;
+  }
+}
+.slideOutLeft {
+  animation-name: slideOutLeft;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.fadeOut {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.fadeInLeft {
+  animation-name: fadeInLeft;
+}
+
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+.fadeOutLeft {
+  animation-name: fadeOutLeft;
+}
+
+@keyframes bounceInUp {
+  0%, 60%, 75%, 90%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.bounceInUp {
+  animation-name: bounceInUp;
+}
+
+@keyframes bounceOutDown {
+  20% {
+    transform: translate3d(0, 10px, 0);
+  }
+  40%, 45% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 2000px, 0);
+  }
+}
+.bounceOutDown {
+  animation-name: bounceOutDown;
+}
+
+@keyframes bounceInLeft {
+  0%, 60%, 75%, 90%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.bounceInLeft {
+  animation-name: bounceInLeft;
+}
+
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    transform: translate3d(20px, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-2000px, 0, 0);
+  }
+}
+.bounceOutLeft {
+  animation-name: bounceOutLeft;
+}
+
+@keyframes rotateInDownLeft {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    transform-origin: left bottom;
+  }
+}
+.rotateInDownLeft {
+  animation-name: rotateInDownLeft;
+}
+
+@keyframes rotateOutDownLeft {
+  0% {
+    opacity: 1;
+    transform-origin: left bottom;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
+    visibility: hidden;
+  }
+}
+.rotateOutDownLeft {
+  animation-name: rotateOutDownLeft;
+}
+
+@keyframes flipInX {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: perspective(400px) rotateX(90deg);
+  }
+  40% {
+    animation-timing-function: ease-in;
+    transform: perspective(400px) rotateX(-20deg);
+  }
+  60% {
+    opacity: 1;
+    transform: perspective(400px) rotateX(10deg);
+  }
+  80% {
+    transform: perspective(400px) rotateX(-5deg);
+  }
+  100% {
+    transform: perspective(400px);
+  }
+}
+.flipInX {
+  animation-name: flipInX;
+  backface-visibility: visible !important;
+}
+
+@keyframes flipOutX {
+  0% {
+    transform: perspective(400px);
+  }
+  30% {
+    opacity: 1;
+    transform: perspective(400px) rotateX(-20deg);
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(400px) rotateX(90deg);
+  }
+}
+.flipOutX {
+  animation-duration: 0.75s;
+  animation-name: flipOutX;
+  backface-visibility: visible !important;
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.zoomIn {
+  animation-name: zoomIn;
+}
+
+@keyframes zoomOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.zoomOut {
+  animation-name: zoomOut;
+}
+
+@keyframes rollIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0) rotate(-120deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.rollIn {
+  animation-name: rollIn;
+}
+
+@keyframes rollOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0) rotate(120deg);
+  }
+}
+.rollOut {
+  animation-name: rollOut;
+}
+
+@keyframes swing {
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+.swing {
+  animation-name: swing;
+  transform-origin: top center;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% { transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% { transform: translate3d(10px, 0, 0); }
+}
+.shake {
+  animation-name: shake;
+}
+
+@keyframes wobble {
+  0% { transform: translate3d(0, 0, 0); }
+  15% { transform: translate3d(-25%, 0, 0) rotate(-5deg); }
+  30% { transform: translate3d(20%, 0, 0) rotate(3deg); }
+  45% { transform: translate3d(-15%, 0, 0) rotate(-3deg); }
+  60% { transform: translate3d(10%, 0, 0) rotate(2deg); }
+  75% { transform: translate3d(-5%, 0, 0) rotate(-1deg); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.wobble {
+  animation-name: wobble;
+}
+
+@keyframes jello {
+  0%, 11.1%, 100% { transform: translate3d(0, 0, 0); }
+  22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+.jello {
+  animation-name: jello;
+  transform-origin: center;
+}

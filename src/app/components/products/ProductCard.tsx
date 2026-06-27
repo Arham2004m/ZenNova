@@ -32,7 +32,7 @@ export default function ProductCard({
   const image = product.images?.[0];
 
   return (
-    <div className={`tp-product-item zn-product-card transition-3 p-relative fix m-img h-100 ${className}`.trim()}>
+    <div className={`tp-product-item zn-product-card transition-3 p-relative fix m-img h-100 ${showCountdown ? "zn-has-countdown" : ""} ${className}`.trim()}>
       <div className="tp-product-thumb p-relative fix m-img zn-product-card__thumb">
         <a href={`/products/${product.slug}`} title={product.name}>
           <img
@@ -92,7 +92,11 @@ export default function ProductCard({
       )}
 
       <div className="zn-product-card__footer">
-        <AddToCartButton product={product} variant="static" />
+        <AddToCartButton
+          product={product}
+          variant="static"
+          label={product.variants && product.variants.length > 0 ? "Select Options" : "Add To Cart"}
+        />
       </div>
     </div>
   );
