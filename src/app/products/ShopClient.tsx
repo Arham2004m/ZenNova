@@ -165,13 +165,15 @@ export default function ShopClient({
         products[0]?.images?.[0],
     };
 
-    const items = categories.map((cat) => ({
-      name: cat.name,
-      count: cat.count,
-      slug: slugify(cat.name),
-      filterValue: cat.name,
-      image: getCategoryImage(cat.name, categoryImages),
-    }));
+    const items = categories
+      .filter((cat) => cat.name.toLowerCase() !== "all")
+      .map((cat) => ({
+        name: cat.name,
+        count: cat.count,
+        slug: slugify(cat.name),
+        filterValue: cat.name,
+        image: getCategoryImage(cat.name, categoryImages),
+      }));
 
     return [allItem, ...items];
   }, [categories, categoryImages, products]);

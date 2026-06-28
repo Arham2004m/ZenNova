@@ -94,9 +94,9 @@ function renderCartFooterHtml(cartDetails: any) {
         <h4>Subtotal:</h4>
         <span>₹${cartDetails.subtotal.toLocaleString("en-IN")}</span>
       </div>
-      <div class="cartmini__checkout-btn mt-20 d-flex justify-content-between gap-2">
-        <a href="/ajax/cart-content?clear=true" class="tp-btn w-100" data-bb-toggle="remove-from-cart" style="text-align: center; background-color: #f37324; color: #fff; border: none;">Clear Cart</a>
-        <a href="/checkout" class="tp-btn w-100" style="text-align: center; background-color: #f37324; color: #fff; border: none;">Checkout</a>
+      <div class="cartmini__checkout-btn">
+        <a href="/ajax/cart-content?clear=true" class="cartmini__btn-clear w-100" data-bb-toggle="remove-from-cart">Clear Cart</a>
+        <a href="/checkout" class="cartmini__btn-checkout w-100">Checkout</a>
       </div>
     </div>
   `;

@@ -6,13 +6,13 @@ export default async function CataloguePage() {
 
   const products = frontend.products ?? [];
 
-  const categoryCounts: Record<string, number> = {
-    All: products.length,
-  };
+  const categoryCounts: Record<string, number> = {};
 
   products.forEach((p: any) => {
     const cat = p.category || "Other";
-    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    if (cat.toLowerCase() !== "all") {
+      categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    }
   });
 
   const categories = Object.entries(categoryCounts).map(

@@ -11,7 +11,9 @@ export default async function Shop() {
   const categoryCounts: Record<string, number> = {};
   products.forEach((p: { category?: string }) => {
     const cat = p.category || "Other";
-    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    if (cat.toLowerCase() !== "all") {
+      categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+    }
   });
 
   const categories = Object.entries(categoryCounts).map(([name, count]) => ({

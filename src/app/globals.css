@@ -184,28 +184,36 @@ a {
 }
 
 .zn-quick-preview__quantity {
-  display: grid;
-  grid-template-columns: 38px 54px 38px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   height: 48px;
 }
 
 .zn-quick-preview__quantity button,
 .zn-quick-preview__quantity input {
-  background: #f4f4f4;
-  border: 0;
-  color: #1f2933;
+  background: transparent !important;
+  border: 0 !important;
+  color: #ffffff !important;
   font-size: 18px;
   text-align: center;
 }
 
 .zn-quick-preview__quantity button {
-  color: #b8b8b8;
+  color: rgba(255, 255, 255, 0.6) !important;
   font-size: 22px;
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+}
+
+.zn-quick-preview__quantity button:hover {
+  color: #ffffff !important;
 }
 
 .zn-quick-preview__quantity input {
-  font-weight: 600;
-  min-width: 0;
+  font-weight: 600 !important;
+  min-width: 0 !important;
+  width: 40px !important;
 }
 
 .zn-quick-preview__quantity input::-webkit-inner-spin-button,
@@ -232,18 +240,32 @@ a {
 
 .zn-quick-preview__details {
   align-items: center;
-  color: #ffffff;
+  color: #ffffff !important;
   display: inline-flex;
   font-size: 14px;
-  font-weight: 700;
-  gap: 10px;
+  font-weight: 600;
+  gap: 6px;
   margin-top: auto;
-  text-decoration: underline;
+  text-decoration: none !important;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.4) !important;
+  padding-bottom: 2px;
   width: fit-content;
+  transition: all 0.2s ease !important;
 }
 
 .zn-quick-preview__details:hover {
-  color: #ff8a00;
+  color: #f37324 !important;
+  border-bottom-color: #f37324 !important;
+}
+
+.zn-quick-preview__arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease !important;
+}
+
+.zn-quick-preview__details:hover .zn-quick-preview__arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 767px) {
@@ -2942,19 +2964,11 @@ body.zn-bundle-route .js-sale-popup-container {
 }
 
 .zn-shop-product-card__footer .tp-product-add-cart-btn-large {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(3px);
-  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
-  visibility: hidden;
-  width: 100%;
-}
-
-.zn-shop-product-card:hover .zn-shop-product-card__footer .tp-product-add-cart-btn-large {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
   visibility: visible;
+  width: 100%;
 }
 
 /* List view */
@@ -3309,8 +3323,70 @@ body.zn-bundle-route .js-sale-popup-container {
 .cartmini__checkout {
   background: #111113 !important;
   border-top: 1px solid #222226 !important;
-  padding-bottom: 25px !important;
-  padding-top: 20px !important;
+  padding: 20px 24px 28px 24px !important;
+}
+
+.cartmini__checkout-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 15px !important;
+}
+
+.cartmini__checkout-title h4 {
+  color: #ffffff !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.cartmini__checkout-title span {
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.cartmini__checkout-btn {
+  display: flex !important;
+  gap: 12px !important;
+  margin-top: 20px !important;
+}
+
+.cartmini__btn-clear {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  text-align: center !important;
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.cartmini__btn-clear:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.cartmini__btn-checkout {
+  background-color: #f37324 !important;
+  color: #ffffff !important;
+  border: none !important;
+  text-align: center !important;
+  padding: 10px 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+.cartmini__btn-checkout:hover {
+  background-color: #ff8539 !important;
+  color: #ffffff !important;
 }
 
 /* Premium dark-theme styling for the mini-cart quantity picker */

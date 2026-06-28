@@ -279,11 +279,11 @@ export default async function Header() {
                                   </h5>
                                   <p style={{ fontSize: "12px", color: "#aaa", margin: "4px 0" }}>{(item.items || []).map((p: any) => p.name).join(" · ")}</p>
                                   <div className="cartmini__price-wrapper">
-                                    <span className="cartmini__price">₹{parseFloat(item.payable as any).toLocaleString("en-IN")}</span>
-                                    {item.subtotal > item.payable && (
-                                      <del style={{ fontSize: "12px", color: "#666", marginLeft: "8px" }}>₹{parseFloat(item.subtotal as any).toLocaleString("en-IN")}</del>
-                                    )}
-                                  </div>
+                                     <span className="cartmini__price">₹{parseFloat((item.payable || 0) as any).toLocaleString("en-IN")}</span>
+                                     {(item.subtotal || 0) > (item.payable || 0) && (
+                                       <del style={{ fontSize: "12px", color: "#666", marginLeft: "8px" }}>₹{parseFloat((item.subtotal || 0) as any).toLocaleString("en-IN")}</del>
+                                     )}
+                                   </div>
                                 </div>
                                 <a href={`/ajax/cart-content?remove_index=${index}`} className="cartmini__del" data-bb-toggle="remove-from-cart">
                                   <svg className="icon svg-icon-ti-ti-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -338,16 +338,16 @@ export default async function Header() {
 
             <div data-bb-toggle="mini-cart-footer-slot">
                 {cartDetails.items.length > 0 && (
-                  <div className="cartmini__checkout">
+                    <div className="cartmini__checkout">
                     <div className="cartmini__checkout-title">
                       <h4>Subtotal:</h4>
                       <span>₹{cartDetails.subtotal.toLocaleString("en-IN")}</span>
                     </div>
-                    <div className="cartmini__checkout-btn mt-20 d-flex justify-content-between gap-2">
-                      <a href="/ajax/cart-content?clear=true" className="tp-btn w-100" data-bb-toggle="remove-from-cart" style={{ textAlign: "center", backgroundColor: "#f37324", color: "#fff", border: "none" }}>Clear Cart</a>
-                      <a href="/checkout" className="tp-btn w-100" style={{ textAlign: "center", backgroundColor: "#f37324", color: "#fff", border: "none" }}>Checkout</a>
+                    <div className="cartmini__checkout-btn">
+                      <a href="/ajax/cart-content?clear=true" className="cartmini__btn-clear w-100" data-bb-toggle="remove-from-cart">Clear Cart</a>
+                      <a href="/checkout" className="cartmini__btn-checkout w-100">Checkout</a>
                     </div>
-                  </div>
+                  </div>   
                 )}
             </div>
         </div>

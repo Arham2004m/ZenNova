@@ -87,7 +87,13 @@ function renderQuickView(product: any) {
           </div>
         </form>
         
-        <a class="zn-quick-preview__details" href="/products/${escapeHtml(product.slug)}">View full details <span aria-hidden="true">-&gt;</span></a>
+        <a class="zn-quick-preview__details" href="/products/${escapeHtml(product.slug)}">
+          <span>View full details</span>
+          <svg class="zn-quick-preview__arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
       </div>
     </div>
   `;
