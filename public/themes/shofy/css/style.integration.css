@@ -433,3 +433,8 @@ li {
 .tp-header-search-box input {
     padding-right: 75px !important;
 }
+
+/* Missing theme asset cross-out.png — use normal pointer on overlay */
+.body-overlay:hover {
+    cursor: pointer !important;
+}

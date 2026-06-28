@@ -136,6 +136,67 @@ export async function getPages() {
   }
 }
 
+// ── BUNDLE OFFERS (from /frontend bundles array or dedicated endpoint) ──
+export async function getBundles() {
+  try {
+    const json = await getFrontend();
+    if (Array.isArray(json.bundles)) return json.bundles;
+    return [];
+  } catch {
+    return [];
+  }
+}
+
+export async function validateBundle(bundleId: string, productIds: string[]) {
+  const res = await fetch(`${BASE_URL}/bundles/${bundleId}/validate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ productIds }),
+    cache: "no-store",
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(json.message || "Bundle validation failed");
+  }
+  return json;
+}
+
+export async function addBundleToCart(bundleId: string, productIds: string[]) {
+  const res = await fetch(`${BASE_URL}/bundles/${bundleId}/add-to-cart`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ productIds }),
+    cache: "no-store",
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(json.message || "Failed to add bundle to cart");
+  }
+  return json;
+}
+
+export async function createStoreOrder(payload: {
+  items: Array<
+    | { type: "BUNDLE"; bundleId: string; productIds: string[] }
+    | { type: "PRODUCT"; id: string; quantity: number }
+  >;
+  customer: Record<string, string>;
+  paymentMethod?: string;
+  couponCode?: string;
+}) {
+  const res = await fetch(`${BASE_URL}/orders`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    cache: "no-store",
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(json.message || "Failed to create order");
+  }
+  return json;
+}
+
 // ── SINGLE PAGE by slug ──
 export async function getPage(slug: string) {
   try {

@@ -152,8 +152,8 @@ export default async function Header() {
                 </div>
                 <div className="col">
                     <div className="text-center tp-mobile-item">
-                        <a href="/login" className="tp-mobile-item-btn">
-                                <svg className="icon  svg-icon-ti-ti-user"
+                        <a href="/faqs" className="tp-mobile-item-btn">
+                                <svg className="icon  svg-icon-ti-ti-eye-question"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -165,9 +165,11 @@ export default async function Header() {
   strokeLinejoin="round"
   >
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-</svg>                                <span className="text-truncate" title="Account">Account</span>
+  <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M14.071 17.764a8.989 8.989 0 0 1 -2.071 .236c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.346 0 6.173 1.727 8.482 5.182" />
+  <path d="M19 22v.01" />
+  <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
+</svg>                                <span className="text-truncate" title="FAQ">FAQ</span>
                             </a>
                     </div>
                 </div>
@@ -390,27 +392,6 @@ export default async function Header() {
                         </div>
                         <div className="col-xl-4 col-lg-3 col-md-8 col-6">
                             <div className="tp-header-main-right d-flex align-items-center justify-content-end">
-                                <div className="tp-header-login d-none d-lg-block">
-                                    <a href="/login" className="d-flex align-items-center">
-                                        <div className="tp-header-login-icon">
-                                            <span style={{"borderColor":"rgb(255, 255, 255)"} as React.CSSProperties}>
-                                                                                                    <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <circle cx="8.57894" cy="5.77803" r="4.77803" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                                        <path fillRule="evenodd" clipRule="evenodd" d="M1.00002 17.2014C0.998732 16.8655 1.07385 16.5337 1.2197 16.2311C1.67736 15.3158 2.96798 14.8307 4.03892 14.611C4.81128 14.4462 5.59431 14.336 6.38217 14.2815C7.84084 14.1533 9.30793 14.1533 10.7666 14.2815C11.5544 14.3367 12.3374 14.4468 13.1099 14.611C14.1808 14.8307 15.4714 15.27 15.9291 16.2311C16.2224 16.8479 16.2224 17.564 15.9291 18.1808C15.4714 19.1419 14.1808 19.5812 13.1099 19.7918C12.3384 19.9634 11.5551 20.0766 10.7666 20.1304C9.57937 20.2311 8.38659 20.2494 7.19681 20.1854C6.92221 20.1854 6.65677 20.1854 6.38217 20.1304C5.59663 20.0773 4.81632 19.9641 4.04807 19.7918C2.96798 19.5812 1.68652 19.1419 1.2197 18.1808C1.0746 17.8747 0.999552 17.5401 1.00002 17.2014Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                                    </svg>
-                                                                                            </span>
-                                        </div>
-                                        <div className="tp-header-login-content d-none d-xl-block">
-                                            <span style={{"borderColor":"rgb(255, 255, 255)"} as React.CSSProperties}>
-                                                                                                    Hello, Guest
-                                                                                            </span>
-                                            <h5 className="tp-header-login-title">
-                                                Login / Register
-                                            </h5>
-                                        </div>
-                                    </a>
-                                </div>
-
                                 <div className="tp-header-action d-flex align-items-center ml-50">
 
 
@@ -451,7 +432,7 @@ export default async function Header() {
                 </div>
             </div>
 
-            <div className="tp-header-bottom tp-header-bottom-border d-none d-lg-block" style={{"backgroundColor":"rgb(0, 0, 0)","color":"rgb(255, 153, 0)","borderColor":"rgb(255, 255, 255)"} as React.CSSProperties}>
+            <div className="tp-header-bottom tp-header-bottom-border zn-header-nav d-none d-lg-block" style={{"backgroundColor":"rgb(0, 0, 0)","color":"rgb(255, 153, 0)","borderColor":"rgba(255, 255, 255, 0.12)"} as React.CSSProperties}>
                 <div className="container">
                     <div className="tp-mega-menu-wrapper p-relative">
                         <div className="row align-items-center">
@@ -574,30 +555,8 @@ export default async function Header() {
                             </a>
 
                                             </li>
-                                            <li className="has-dropdown">
-                                                <a href="#" title="Pages">
-                
-
-                Pages
-
-                                    <svg className="icon  svg-icon-ti-ti-chevron-down"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M6 9l6 6l6 -6" />
-</svg>                            </a>
-
-                                                <ul className="tp-submenu">
-                                                    <li className="">
-                                                        <a href="/faqs" title="FAQs">
+                                            <li className="">
+                                                <a href="/faqs" title="FAQ">
                 <svg className="icon me-1 svg-icon-ti-ti-eye-question"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -616,61 +575,9 @@ export default async function Header() {
   <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
 </svg>
 
-                FAQs
+                FAQ
 
                             </a>
-
-                                                    </li>
-                                                    <li className="">
-                                                        <a href="/login" title="Login">
-                <svg className="icon me-1 svg-icon-ti-ti-login-2"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
-  <path d="M3 12h13l-3 -3" />
-  <path d="M13 15l3 -3" />
-</svg>
-
-                Login
-
-                            </a>
-
-                                                    </li>
-                                                    <li className="">
-                                                        <a href="/register" title="Register">
-                <svg className="icon me-1 svg-icon-ti-ti-user-check"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-  <path d="M15 19l2 2l4 -4" />
-</svg>
-
-                Register
-
-                            </a>
-
-                                                    </li>
-
-                                                </ul>
 
                                             </li>
                                         </ul>
@@ -715,7 +622,7 @@ export default async function Header() {
         </div>
     </header>
 
-    <div id="header-sticky-2" className="tp-header-sticky-area">
+    <div id="header-sticky-2" className="tp-header-sticky-area zn-header-nav zn-header-sticky">
         <div className="container">
             <div className="tp-mega-menu-wrapper p-relative">
                 <div className="row align-items-center">
@@ -832,30 +739,8 @@ export default async function Header() {
                             </a>
 
                                     </li>
-                                    <li className="has-dropdown">
-                                        <a href="#" title="Pages">
-                
-
-                Pages
-
-                                    <svg className="icon  svg-icon-ti-ti-chevron-down"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M6 9l6 6l6 -6" />
-</svg>                            </a>
-
-                                        <ul className="tp-submenu">
-                                            <li className="">
-                                                <a href="/faqs" title="FAQs">
+                                    <li className="">
+                                        <a href="/faqs" title="FAQ">
                 <svg className="icon me-1 svg-icon-ti-ti-eye-question"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -874,61 +759,9 @@ export default async function Header() {
   <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
 </svg>
 
-                FAQs
+                FAQ
 
                             </a>
-
-                                            </li>
-                                            <li className="">
-                                                <a href="/login" title="Login">
-                <svg className="icon me-1 svg-icon-ti-ti-login-2"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
-  <path d="M3 12h13l-3 -3" />
-  <path d="M13 15l3 -3" />
-</svg>
-
-                Login
-
-                            </a>
-
-                                            </li>
-                                            <li className="">
-                                                <a href="/register" title="Register">
-                <svg className="icon me-1 svg-icon-ti-ti-user-check"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-  <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-  <path d="M15 19l2 2l4 -4" />
-</svg>
-
-                Register
-
-                            </a>
-
-                                            </li>
-
-                                        </ul>
 
                                     </li>
                                 </ul>

@@ -12,6 +12,7 @@ import {
   isColorAttribute,
   productMatchesAttributes,
 } from "../components/shop/shopFilterUtils";
+import { getNavCategoryLinks } from "@/lib/category-slugs";
 
 type CategoryItem = {
   name: string;
@@ -25,6 +26,10 @@ type Props = {
   products: Product[];
   categories: { name: string; count: number }[];
   storeData?: any;
+  categoryPage?: {
+    title: string;
+    slug: string;
+  };
 };
 
 type SortOption =
@@ -122,7 +127,12 @@ function colorToCss(value: string) {
   return map[value.toLowerCase()] ?? "#60a5fa";
 }
 
-export default function ShopClient({ products, categories, storeData = {} }: Props) {
+export default function ShopClient({
+  products,
+  categories,
+  storeData = {},
+  categoryPage,
+}: Props) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [expandedTags, setExpandedTags] = useState<string[]>([]);
@@ -191,10 +201,12 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
 
   const variantFilters = useMemo(() => extractVariantFilters(products), [products]);
 
+  const navCategories = useMemo(() => getNavCategoryLinks(), []);
+
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    if (selectedCategory !== "All") {
+    if (!categoryPage && selectedCategory !== "All") {
       result = result.filter(
         (p) => p.category?.toLowerCase() === selectedCategory.toLowerCase()
       );
@@ -271,6 +283,7 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
     priceRange,
     searchQuery,
     sortBy,
+    categoryPage,
   ]);
 
   const visibleProducts = filteredProducts.slice(0, perPage);
@@ -279,6 +292,8 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
   const swiperRef = useRef<{ destroy: () => void } | null>(null);
 
   useEffect(() => {
+    if (categoryPage) return;
+
     const timer = setTimeout(() => {
       if (typeof window === "undefined" || !(window as any).Swiper) return;
 
@@ -300,7 +315,7 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
       swiperRef.current?.destroy();
       swiperRef.current = null;
     };
-  }, [displayCategories.length]);
+  }, [displayCategories.length, categoryPage]);
 
   const selectCategory = (filterValue: string) => {
     setSelectedCategory(filterValue);
@@ -327,8 +342,39 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
     });
   };
 
+  if (categoryPage && products.length === 0) {
+    return (
+      <main className="zn-shop-page zn-category-page">
+        <section className="zn-category-empty-page">
+          <div className="container">
+            <h1 className="zn-category-shop-title">{categoryPage.title}</h1>
+            <div className="zn-category-empty">
+              <div className="zn-category-empty__icon" aria-hidden="true">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
+              <p className="zn-category-empty__label">Empty category</p>
+              <h2>No products here yet</h2>
+              <p className="zn-category-empty__text">
+                We don&apos;t have any items in <strong>{categoryPage.title}</strong> right now.
+                Browse our full catalog to find what you need.
+              </p>
+              <a href="/products" className="zn-category-empty__btn">
+                View all products
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
-    <main className="zn-shop-page">
+    <main className={`zn-shop-page ${categoryPage ? "zn-category-page" : ""}`}>
+      {!categoryPage && (
       <section className="tp-product-category zn-shop-categories pt-40 pb-20">
         <div className="container">
           <div className="tp-product-categories-slider zn-shop-categories-slider swiper-container">
@@ -364,9 +410,13 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
           </div>
         </div>
       </section>
+      )}
 
       <section className="tp-shop-area pb-100 zn-shop-area">
         <div className="container">
+          {categoryPage && (
+            <h1 className="zn-category-shop-title">{categoryPage.title}</h1>
+          )}
           <div className="row zn-shop-toolbar-row g-3 align-items-center">
             <div className="col-xl-3 col-lg-4">
               <div className="tp-sidebar-search-input zn-shop-toolbar-search">
@@ -452,7 +502,6 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
                       value={String(perPage)}
                       options={PER_PAGE_OPTIONS}
                       onChange={(value) => setPerPage(Number(value))}
-                      compact
                       ariaLabel="Products per page"
                     />
                   </div>
@@ -469,20 +518,32 @@ export default function ShopClient({ products, categories, storeData = {} }: Pro
                   <div className="tp-shop-widget-content">
                     <div className="tp-shop-widget-categories zn-shop-widget-categories">
                       <ul>
-                        {displayCategories.map((cat) => (
-                          <li key={cat.slug}>
-                            <button
-                              type="button"
-                              className={
-                                selectedCategory === cat.filterValue ? "active" : ""
-                              }
-                              onClick={() => selectCategory(cat.filterValue)}
-                            >
-                              {cat.filterValue === "All" ? ALL_ICON : FOLDER_ICON}
-                              <span>{cat.name}</span>
-                            </button>
-                          </li>
-                        ))}
+                        {categoryPage
+                          ? navCategories.map((cat) => (
+                              <li key={cat.slug}>
+                                <a
+                                  href={`/product-categories/${cat.slug}`}
+                                  className={cat.slug === categoryPage.slug ? "active" : ""}
+                                >
+                                  {cat.slug === "all-supplements" ? ALL_ICON : FOLDER_ICON}
+                                  <span>{cat.title}</span>
+                                </a>
+                              </li>
+                            ))
+                          : displayCategories.map((cat) => (
+                              <li key={cat.slug}>
+                                <button
+                                  type="button"
+                                  className={
+                                    selectedCategory === cat.filterValue ? "active" : ""
+                                  }
+                                  onClick={() => selectCategory(cat.filterValue)}
+                                >
+                                  {cat.filterValue === "All" ? ALL_ICON : FOLDER_ICON}
+                                  <span>{cat.name}</span>
+                                </button>
+                              </li>
+                            ))}
                       </ul>
                     </div>
                   </div>

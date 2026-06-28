@@ -6,6 +6,8 @@ import type { Product } from "@/types/product";
 import ProductCard from "./components/products/ProductCard";
 import DealOfTheDaySection from "./components/products/DealOfTheDaySection";
 import CustomerReviewsSection from "./components/products/CustomerReviewsSection";
+import BundleCard from "@/components/Bundle/BundleCard";
+import type { BundleOffer } from "@/components/Bundle/types";
 
 type Props = {
   products: Product[];
@@ -52,6 +54,7 @@ const TESTIMONIALS = [
 ];
 
 export default function HomeClient({ products, storeData }: Props) {
+  const bundles = (storeData?.bundles || []) as BundleOffer[];
   const uniqueCategories = useMemo(
     () => [...new Set((storeData?.categories ?? []) as string[])],
     [storeData?.categories]
@@ -504,6 +507,35 @@ export default function HomeClient({ products, storeData }: Props) {
         </section>
 
         <DealOfTheDaySection products={products} />
+
+        {bundles.length > 0 && (
+          <section className="tp-product-area pt-50 pb-50">
+            <div className="container">
+              <div className="row align-items-center mb-40">
+                <div className="col-xl-8 col-md-8">
+                  <div className="tp-section-title-wrapper">
+                    <h3 className="section-title tp-section-title">
+                      <span>Bundle</span> Offers
+                    </h3>
+                    <p className="text-muted mt-2">
+                      Pick your favorites and unlock a fixed bundle price.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-xl-4 col-md-4 text-md-end">
+                  <a href="/bundle" className="tp-btn tp-btn-2">
+                    View all bundles
+                  </a>
+                </div>
+              </div>
+              <div className="zn-bundle-page__grid">
+                {bundles.slice(0, 1).map((bundle) => (
+                  <BundleCard key={bundle.id} bundle={bundle} products={products} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <div className="tp-product-banner-area pt-30 pb-30">
           <div className="container">

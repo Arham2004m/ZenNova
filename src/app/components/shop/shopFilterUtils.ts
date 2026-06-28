@@ -115,7 +115,7 @@ export function getPriceBounds(products: Product[]) {
   }
 
   return {
-    min: Math.floor(Math.min(...prices)),
+    min: 0,
     max: Math.ceil(Math.max(...prices)),
   };
 }

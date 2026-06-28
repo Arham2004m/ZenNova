@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Modals from "./components/Modals";
 import ClientLoader from "./ClientLoader";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import { CartProvider } from "@/components/Cart/CartProvider";
+import CartBridge from "@/components/Cart/CartBridge";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -86,6 +88,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link media="all" type="text/css" rel="stylesheet" href="/themes/shofy/css/style.integration.css?v=1781380464" />
         <link media="all" type="text/css" rel="stylesheet" href="/vendor/core/plugins/announcement/css/announcement.css?v=1.3.4" />
 
+        {/* jQuery must load before legacy theme scripts */}
+        <script src="/themes/shofy/js/jquery-3.7.1.min.js" />
+
         {/* Global configuration scripts */}
         <script dangerouslySetInnerHTML={{ __html: `
           window.siteUrl = "";
@@ -94,15 +99,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
 
       <body id="page-home">
+        <CartProvider>
         <ClientLoader />
         <AnnouncementBar initialConfig={announcementConfig} />
         <Header />
         {children}
         <Footer />
         <Modals />
+        <CartBridge />
+        </CartProvider>
 
         {/* Client-side JavaScript assets loaded in correct sequence */}
-        <Script src="/themes/shofy/js/jquery-3.7.1.min.js" strategy="beforeInteractive" />
         <Script src="/themes/shofy/plugins/bootstrap/bootstrap.min.js" strategy="afterInteractive" />
         <Script src="/themes/shofy/js/meanmenu.js" strategy="afterInteractive" />
         <Script src="/themes/shofy/plugins/swiper/swiper-bundle.js?v=1.3.4" strategy="afterInteractive" />
