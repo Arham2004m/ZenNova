@@ -1,11 +1,10 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import type { Product } from "@/types/product";
 import { addBundleToCart } from "@/lib/api";
 import type { BundleOffer, BundleProduct } from "@/components/Bundle/types";
 
-function toBundleProduct(product: Product | BundleProduct): BundleProduct {
+function normalizeBundleProduct(product: BundleProduct): BundleProduct {
   return {
     id: product.id,
     name: product.name,
@@ -19,121 +18,181 @@ function toBundleProduct(product: Product | BundleProduct): BundleProduct {
   };
 }
 
-export function getEligibleProducts(bundle: BundleOffer, allProducts: Product[]): BundleProduct[] {
-  const mode = bundle.mode || bundle.bundleMode || "CATEGORY";
-
-  if (mode === "PRODUCTS") {
-    const mapped = (bundle.selectedProducts || []).map(toBundleProduct);
-    if (mapped.length) return mapped;
-    return [];
-  }
-
-  const categoryName = bundle.category?.name;
-  if (!categoryName) return [];
-
-  return allProducts
-    .filter((product) => product.category === categoryName && product.isActive !== false)
-    .map(toBundleProduct);
+/** Products explicitly chosen by admin in EVOC Labs — no category filtering. */
+export function getBundleProducts(bundle: BundleOffer): BundleProduct[] {
+  return (bundle.selectedProducts || [])
+    .filter((product) => product.isActive !== false)
+    .map(normalizeBundleProduct);
 }
 
-export function useBundle(bundle: BundleOffer, allProducts: Product[]) {
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+export function useBundle(bundle: BundleOffer) {
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [adding, setAdding] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
 
-  const eligibleProducts = useMemo(
-    () => getEligibleProducts(bundle, allProducts),
-    [bundle, allProducts]
-  );
-
-  const selectedProducts = useMemo(
-    () => eligibleProducts.filter((product) => selectedIds.includes(product.id)),
-    [eligibleProducts, selectedIds]
-  );
+  const bundleProducts = useMemo(() => getBundleProducts(bundle), [bundle]);
 
   const requiredQuantity = bundle.requiredQuantity;
   const bundlePrice = Number(bundle.bundlePrice);
 
-  const subtotal = useMemo(
-    () => selectedProducts.reduce((sum, product) => sum + Number(product.price), 0),
-    [selectedProducts]
+  const totalSelected = useMemo(
+    () => Object.values(quantities).reduce((sum, qty) => sum + qty, 0),
+    [quantities]
   );
 
-  const isComplete = selectedIds.length === requiredQuantity;
-  const payable = isComplete ? bundlePrice : subtotal;
-  const savings = isComplete ? Math.max(0, subtotal - bundlePrice) : 0;
+  const selectedIds = useMemo(() => {
+    const ids: string[] = [];
+    Object.entries(quantities).forEach(([id, qty]) => {
+      for (let i = 0; i < qty; i += 1) ids.push(id);
+    });
+    return ids;
+  }, [quantities]);
 
-  const toggleProduct = useCallback(
+  const selectedProducts = useMemo(() => {
+    const items: BundleProduct[] = [];
+    Object.entries(quantities).forEach(([id, qty]) => {
+      const product = bundleProducts.find((entry) => entry.id === id);
+      if (!product) return;
+      for (let i = 0; i < qty; i += 1) items.push(product);
+    });
+    return items;
+  }, [quantities, bundleProducts]);
+
+  const originalTotal = useMemo(
+    () =>
+      Object.entries(quantities).reduce((sum, [id, qty]) => {
+        const product = bundleProducts.find((entry) => entry.id === id);
+        return sum + (product ? Number(product.price) * qty : 0);
+      }, 0),
+    [quantities, bundleProducts]
+  );
+
+  const compareAtTotal = useMemo(
+    () =>
+      Object.entries(quantities).reduce((sum, [id, qty]) => {
+        const product = bundleProducts.find((entry) => entry.id === id);
+        if (!product) return sum;
+        const unit =
+          product.compareAtPrice && Number(product.compareAtPrice) > Number(product.price)
+            ? Number(product.compareAtPrice)
+            : Number(product.price);
+        return sum + unit * qty;
+      }, 0),
+    [quantities, bundleProducts]
+  );
+
+  const isComplete = totalSelected === requiredQuantity;
+  const bundleSavings = isComplete ? Math.max(0, originalTotal - bundlePrice) : 0;
+  const compareSavings = Math.max(0, compareAtTotal - originalTotal);
+  const displaySavings = isComplete ? bundleSavings : compareSavings;
+  const displayPrice = isComplete ? bundlePrice : originalTotal;
+  const strikePrice = isComplete
+    ? originalTotal > bundlePrice
+      ? originalTotal
+      : 0
+    : compareAtTotal > originalTotal
+      ? compareAtTotal
+      : 0;
+  const payable = isComplete ? bundlePrice : 0;
+  const remaining = Math.max(0, requiredQuantity - totalSelected);
+  const isBundleFull = totalSelected >= requiredQuantity;
+
+  const getQuantity = useCallback(
+    (productId: string) => quantities[productId] || 0,
+    [quantities]
+  );
+
+  const addToBox = useCallback(
     (productId: string) => {
+      if (isBundleFull) return;
       setError(null);
-      setSuccess(null);
-      setSelectedIds((prev) => {
-        if (prev.includes(productId)) {
-          return prev.filter((id) => id !== productId);
-        }
-        if (prev.length >= requiredQuantity) {
-          return prev;
-        }
-        return [...prev, productId];
-      });
+      setQuantities((prev) => ({
+        ...prev,
+        [productId]: (prev[productId] || 0) + 1,
+      }));
     },
-    [requiredQuantity]
+    [isBundleFull]
   );
 
-  const clearSelection = useCallback(() => {
-    setSelectedIds([]);
+  const increment = useCallback(
+    (productId: string) => {
+      if (isBundleFull) return;
+      setError(null);
+      setQuantities((prev) => ({
+        ...prev,
+        [productId]: (prev[productId] || 0) + 1,
+      }));
+    },
+    [isBundleFull]
+  );
+
+  const decrement = useCallback((productId: string) => {
     setError(null);
-    setSuccess(null);
+    setQuantities((prev) => {
+      const next = { ...prev };
+      const current = next[productId] || 0;
+      if (current <= 1) delete next[productId];
+      else next[productId] = current - 1;
+      return next;
+    });
   }, []);
 
   const addToCart = useCallback(async () => {
     setError(null);
-    setSuccess(null);
 
     if (!isComplete) {
-      setError(`Select ${requiredQuantity} product${requiredQuantity === 1 ? "" : "s"} to unlock the bundle price.`);
+      setError(`Add ${remaining} more item${remaining === 1 ? "" : "s"} to checkout.`);
       return;
     }
 
     try {
       setAdding(true);
-      const result = await addBundleToCart(bundle.id, selectedIds);
+      const result = await addBundleToCart(bundle.id, selectedIds, quantities);
       if (!result.success) {
         throw new Error(result.message || "Could not add bundle to cart");
       }
 
-      const existing = typeof window !== "undefined"
-        ? JSON.parse(localStorage.getItem("orbit_cart") || "[]")
-        : [];
+      const existing =
+        typeof window !== "undefined"
+          ? JSON.parse(localStorage.getItem("orbit_cart") || "[]")
+          : [];
       const nextCart = Array.isArray(existing) ? [...existing, result.cartItem] : [result.cartItem];
       localStorage.setItem("orbit_cart", JSON.stringify(nextCart));
       window.dispatchEvent(new CustomEvent("orbit:cart-updated"));
 
-      setSuccess("Bundle added to cart!");
-      setSelectedIds([]);
-    } catch (err: any) {
-      setError(err.message || "Failed to add bundle to cart");
+      setQuantities({});
+      window.location.href = "/checkout";
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to add bundle to cart");
     } finally {
       setAdding(false);
     }
-  }, [bundle.id, isComplete, requiredQuantity, selectedIds]);
+  }, [bundle.id, isComplete, remaining, selectedIds, quantities]);
 
   return {
-    eligibleProducts,
+    bundleProducts,
+    quantities,
     selectedIds,
     selectedProducts,
     requiredQuantity,
     bundlePrice,
-    subtotal,
+    originalTotal,
+    compareAtTotal,
+    displayPrice,
+    strikePrice,
+    displaySavings,
     payable,
-    savings,
+    savings: bundleSavings,
+    totalSelected,
+    remaining,
     isComplete,
-    toggleProduct,
-    clearSelection,
+    isBundleFull,
+    getQuantity,
+    addToBox,
+    increment,
+    decrement,
     addToCart,
     adding,
     error,
-    success,
   };
 }

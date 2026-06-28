@@ -161,11 +161,15 @@ export async function validateBundle(bundleId: string, productIds: string[]) {
   return json;
 }
 
-export async function addBundleToCart(bundleId: string, productIds: string[]) {
+export async function addBundleToCart(
+  bundleId: string,
+  productIds: string[],
+  quantities?: Record<string, number>
+) {
   const res = await fetch(`${BASE_URL}/bundles/${bundleId}/add-to-cart`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ productIds }),
+    body: JSON.stringify({ productIds, quantities }),
     cache: "no-store",
   });
   const json = await res.json().catch(() => ({}));

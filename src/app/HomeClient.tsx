@@ -6,9 +6,6 @@ import type { Product } from "@/types/product";
 import ProductCard from "./components/products/ProductCard";
 import DealOfTheDaySection from "./components/products/DealOfTheDaySection";
 import CustomerReviewsSection from "./components/products/CustomerReviewsSection";
-import BundleCard from "@/components/Bundle/BundleCard";
-import type { BundleOffer } from "@/components/Bundle/types";
-
 type Props = {
   products: Product[];
   storeData: any;
@@ -54,7 +51,6 @@ const TESTIMONIALS = [
 ];
 
 export default function HomeClient({ products, storeData }: Props) {
-  const bundles = (storeData?.bundles || []) as BundleOffer[];
   const uniqueCategories = useMemo(
     () => [...new Set((storeData?.categories ?? []) as string[])],
     [storeData?.categories]
@@ -208,6 +204,8 @@ export default function HomeClient({ products, storeData }: Props) {
   const catalogueSlide = storeData?.customization?.heroSection?.slides?.find(
     (slide: any) => slide.ctaLink === "/catalogue"
   );
+  const detoxBanner = banners[1];
+  const detoxBannerHref = detoxBanner?.link?.trim() || "/bundle";
 
   return (
     <>
@@ -462,10 +460,10 @@ export default function HomeClient({ products, storeData }: Props) {
               <div className="col-xl-4 col-lg-5">
                 <div className="tp-banner-item tp-banner-height p-relative mb-30 z-index-1 fix">
                   <div className="tp-banner-thumb include-bg transition-3">
-                    <a href={banners[1]?.link || "/products"}>
+                    <a href={detoxBannerHref}>
                       <img
                         src={banners[1]?.image}
-                        alt={banners[1]?.title || "Banner"}
+                        alt={banners[1]?.title || "Bundle offer"}
                         style={{ width: "100%" }}
                         loading="lazy"
                       />
@@ -473,7 +471,7 @@ export default function HomeClient({ products, storeData }: Props) {
                   </div>
                   <div className="tp-banner-content">
                     <div className="tp-banner-btn">
-                      <a href={banners[1]?.link || "/products"} className="tp-link-btn">
+                      <a href={detoxBannerHref} className="tp-link-btn">
                         {banners[1]?.buttonText || "Shop Now"}
                         <svg
                           width="15"
@@ -508,49 +506,22 @@ export default function HomeClient({ products, storeData }: Props) {
 
         <DealOfTheDaySection products={products} />
 
-        {bundles.length > 0 && (
-          <section className="tp-product-area pt-50 pb-50">
-            <div className="container">
-              <div className="row align-items-center mb-40">
-                <div className="col-xl-8 col-md-8">
-                  <div className="tp-section-title-wrapper">
-                    <h3 className="section-title tp-section-title">
-                      <span>Bundle</span> Offers
-                    </h3>
-                    <p className="text-muted mt-2">
-                      Pick your favorites and unlock a fixed bundle price.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-xl-4 col-md-4 text-md-end">
-                  <a href="/bundle" className="tp-btn tp-btn-2">
-                    View all bundles
-                  </a>
-                </div>
-              </div>
-              <div className="zn-bundle-page__grid">
-                {bundles.slice(0, 1).map((bundle) => (
-                  <BundleCard key={bundle.id} bundle={bundle} products={products} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         <div className="tp-product-banner-area pt-30 pb-30">
           <div className="container">
-            <picture>
-              <source
-                srcSet="/storage/gemini-generated-image-4w8g5d4w8g5d4w8g-1.webp"
-                media="(min-width: 992px)"
-              />
-              <img
-                src="/storage/whatsapp-image-2026-05-21-at-44038-pm.webp"
-                style={{ width: "100%" }}
-                loading="lazy"
-                alt="Certification"
-              />
-            </picture>
+            <a href="/bundle" className="zn-bundle-banner-link" aria-label="View bundle offer">
+              <picture>
+                <source
+                  srcSet="/storage/gemini-generated-image-4w8g5d4w8g5d4w8g-1.webp"
+                  media="(min-width: 992px)"
+                />
+                <img
+                  src="/storage/whatsapp-image-2026-05-21-at-44038-pm.webp"
+                  style={{ width: "100%" }}
+                  loading="lazy"
+                  alt="Bundle offer — Buy any 3 supplements at ₹1499"
+                />
+              </picture>
+            </a>
           </div>
         </div>
 
