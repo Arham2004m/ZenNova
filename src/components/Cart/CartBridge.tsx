@@ -105,12 +105,5 @@ export default function CartBridge() {
     };
   }, [refreshCart]);
 
-  if (!contentSlot || !footerSlot) return null;
-
-  return (
-    <>
-      {createPortal(<MiniCartContent variant="content" />, contentSlot)}
-      {createPortal(<MiniCartContent variant="footer" />, footerSlot)}
-    </>
-  );
+  return null;
 }
