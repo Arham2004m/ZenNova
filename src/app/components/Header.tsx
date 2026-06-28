@@ -1,10 +1,16 @@
-/* eslint-disable */
 import React from 'react';
 import { getFrontend } from "@/lib/api";
+import { cookies } from "next/headers";
+import { getCartDetails } from "@/lib/cart";
+import { getWishlist } from "@/lib/wishlist";
 
 export default async function Header() {
   let logoUrl = "/storage/logot.webp";
   let navLinks: any[] = [];
+  const cookieStore = await cookies();
+  const cartDetails = await getCartDetails(cookieStore);
+  const wishlist = getWishlist(cookieStore);
+  const wishlistCount = wishlist.length;
   try {
     const data = await getFrontend();
     logoUrl = data?.customization?.headerConfig?.logoUrl || data?.store?.logo || "/storage/logot.webp";
@@ -252,10 +258,70 @@ export default async function Header() {
                     </div>
                 </div>
 
-                <div data-bb-toggle="mini-cart-content-slot"></div>
+                <div data-bb-toggle="mini-cart-content-slot">
+                    {cartDetails.items.length === 0 ? (
+                      <div className="cartmini__empty text-center">
+                        <p>Your cart is empty.</p>
+                        <a href="/products" className="tp-btn">Go to Shop</a>
+                      </div>
+                    ) : (
+                      <div className="cartmini__widget">
+                        {cartDetails.items.map((item) => {
+                          const imgUrl = item.product.images?.[0] || "/storage/logot.webp";
+                          return (
+                            <div className="cartmini__widget-item" key={item.product.id}>
+                              <div className="cartmini__thumb">
+                                <a href={`/products/${item.product.slug}`}>
+                                  <img src={imgUrl} alt={item.product.name} />
+                                </a>
+                              </div>
+                              <div className="cartmini__content">
+                                <h5 className="cartmini__title">
+                                  <a href={`/products/${item.product.slug}`}>{item.product.name}</a>
+                                </h5>
+                                <div className="cartmini__price-wrapper">
+                                  <span className="cartmini__price">₹{parseFloat(item.product.price).toLocaleString("en-IN")}</span>
+                                </div>
+                                <div className="cartmini__quantity mt-10 mb-10">
+                                  <form action="/ajax/cart-content" method="POST">
+                                    <input type="hidden" name="id" value={item.product.id} />
+                                    <input type="hidden" name="cart_action" value="update" />
+                                    <div className="tp-product-quantity">
+                                      <span className="tp-cart-minus" data-bb-toggle="decrease-qty">-</span>
+                                      <input className="tp-cart-input" type="text" value={item.quantity} data-bb-toggle="update-cart" name="qty" readOnly />
+                                      <span className="tp-cart-plus" data-bb-toggle="increase-qty">+</span>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                              <a href={`/ajax/cart-content?remove=${item.product.id}`} className="cartmini__del" data-bb-toggle="remove-from-cart">
+                                <svg className="icon svg-icon-ti-ti-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                              </a>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                </div>
             </div>
 
-            <div data-bb-toggle="mini-cart-footer-slot"></div>
+            <div data-bb-toggle="mini-cart-footer-slot">
+                {cartDetails.items.length > 0 && (
+                  <div className="cartmini__checkout">
+                    <div className="cartmini__checkout-title">
+                      <h4>Subtotal:</h4>
+                      <span>₹{cartDetails.subtotal.toLocaleString("en-IN")}</span>
+                    </div>
+                    <div className="cartmini__checkout-btn mt-20 d-flex justify-content-between gap-2">
+                      <a href="/ajax/cart-content?clear=true" className="tp-btn w-100" data-bb-toggle="remove-from-cart" style={{ textAlign: "center", backgroundColor: "#f37324", color: "#fff", border: "none" }}>Clear Cart</a>
+                      <a href="/checkout" className="tp-btn w-100" style={{ textAlign: "center", backgroundColor: "#f37324", color: "#fff", border: "none" }}>Checkout</a>
+                    </div>
+                  </div>
+                )}
+            </div>
         </div>
     </div>
     <header>
@@ -354,7 +420,7 @@ export default async function Header() {
                         <path fillRule="evenodd" clipRule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span className="tp-header-action-badge" data-bb-value="wishlist-count">0</span>
+                    <span className="tp-header-action-badge" data-bb-value="wishlist-count">{wishlistCount}</span>
                 </a>
                                     </div>
                                     <div className="tp-header-action-item tp-header-action-item-cart">
@@ -365,7 +431,7 @@ export default async function Header() {
                         <path d="M7.70365 10.1018H7.74942" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M13.5343 10.1018H13.5801" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span className="tp-header-action-badge" data-bb-value="cart-count">0</span>
+                    <span className="tp-header-action-badge" data-bb-value="cart-count">{cartDetails.count}</span>
                 </button>
                                     </div>
                                     <div className="tp-header-action-item d-lg-none tp-header-action-item-menu">
@@ -880,7 +946,7 @@ export default async function Header() {
                         <path fillRule="evenodd" clipRule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span className="tp-header-action-badge" data-bb-value="wishlist-count">0</span>
+                    <span className="tp-header-action-badge" data-bb-value="wishlist-count">{wishlistCount}</span>
                 </a>
                             </div>
                             <div className="tp-header-action-item tp-header-action-item-cart">
@@ -891,7 +957,7 @@ export default async function Header() {
                         <path d="M7.70365 10.1018H7.74942" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M13.5343 10.1018H13.5801" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <span className="tp-header-action-badge" data-bb-value="cart-count">0</span>
+                    <span className="tp-header-action-badge" data-bb-value="cart-count">{cartDetails.count}</span>
                 </button>
                             </div>
                             <div className="tp-header-action-item d-lg-none tp-header-action-item-menu">

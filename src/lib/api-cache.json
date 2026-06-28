@@ -1,0 +1,487 @@
+{
+  "products": [
+    {
+      "id": "a19d101e-3c9b-417c-9084-b4c9601801ab",
+      "slug": "zennova-ashwagandha-premium-stress-immune-support",
+      "name": "Zennova Ashwagandha – Premium Stress & Immune Support",
+      "description": "Experience the power of nature with Zennova Ashwagandha, a premium herbal supplement designed to support your body and mind naturally. Made with high-quality Ashwagandha extract, this powerful adaptogen helps reduce stress, improve energy levels, support immunity, and promote overall wellness.\n\n",
+      "price": "600",
+      "compareAtPrice": "800",
+      "sku": "",
+      "stock": 1000,
+      "images": [
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416348524-755608249-whatsapp-image-2026-05-31-at-42031-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416348/orbit-platform/1782416347079-367673211-whatsapp-image-2026-05-31-at-12249-am-1%20%283%29.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416348/orbit-platform/1782416347082-348151910-whatsapp-image-2026-05-31-at-12550-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416347890-990365026-whatsapp-image-2026-05-31-at-12548-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416347893-57453592-whatsapp-image-2026-05-31-at-12548-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416347897-658322615-whatsapp-image-2026-05-31-at-12550-am.jpg"
+      ],
+      "category": "BODY CARE",
+      "tags": [],
+      "customFields": null,
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isValueCombo": false,
+      "isNewArrival": false,
+      "isActive": true,
+      "createdAt": "2026-06-25T19:43:04.753Z",
+      "variants": [],
+      "reviews": [],
+      "averageRating": null,
+      "reviewCount": 0
+    },
+    {
+      "id": "9b5a64ad-dffc-4d9d-869e-443d1feb84f3",
+      "slug": "zennova-fat-burne-thermogenic-formula",
+      "name": "Zennova Fat Burne - Thermogenic formula",
+      "description": "Zennova Fat Burner is an advanced thermogenic formula designed to support weight management, boost metabolism, and enhance daily energy levels. Crafted with powerful ingredients, this premium supplement helps support fat-burning processes naturally while assisting with appetite control, workout performance, and overall fitness goals.\n\n",
+      "price": "1120",
+      "compareAtPrice": "1360",
+      "sku": "",
+      "stock": 1000,
+      "images": [
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416284/orbit-platform/1782416283320-884158586-whatsapp-image-2026-05-31-at-40352-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416271901-810048716-whatsapp-image-2026-05-31-at-12249-am-1%20%282%29.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416271905-334988898-whatsapp-image-2026-05-31-at-12510-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416272543-195991833-whatsapp-image-2026-05-31-at-12509-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416272546-178724085-whatsapp-image-2026-05-31-at-12508-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416274/orbit-platform/1782416272972-972575891-whatsapp-image-2026-05-31-at-12510-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416274/orbit-platform/1782416272974-827838305-whatsapp-image-2026-05-31-at-12509-am.jpg"
+      ],
+      "category": "FACE",
+      "tags": [],
+      "customFields": null,
+      "isFeatured": false,
+      "isBestSeller": false,
+      "isValueCombo": false,
+      "isNewArrival": false,
+      "isActive": true,
+      "createdAt": "2026-06-25T19:38:30.294Z",
+      "variants": [],
+      "reviews": [],
+      "averageRating": null,
+      "reviewCount": 0
+    },
+    {
+      "id": "988c8a62-d707-40ac-bb81-00b951d113cb",
+      "slug": "zennova-lungs-detox",
+      "name": "Zennova Lungs Detox",
+      "description": "Zennova Lungs Detox is an advanced lung cleanse formula specially designed to support respiratory health, clear airways, and promote easier breathing. Crafted with powerful herbal and wellness-support ingredients, this premium supplement helps support the body’s natural detoxification process while maintaining healthy lung function and respiratory comfort.",
+      "price": "1130",
+      "compareAtPrice": "1559",
+      "sku": "ZN02",
+      "stock": 997,
+      "images": [
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414954/orbit-platform/1782414953618-68186256-whatsapp-image-2026-05-31-at-35910-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414935/orbit-platform/1782414933747-833822800-whatsapp-image-2026-05-31-at-12249-am-1%20%281%29.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414935/orbit-platform/1782414933752-580480125-whatsapp-image-2026-05-31-at-12610-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414935/orbit-platform/1782414934365-351897372-whatsapp-image-2026-05-31-at-12609-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414936/orbit-platform/1782414935019-350308369-whatsapp-image-2026-05-31-at-12610-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414936/orbit-platform/1782414935022-175927184-whatsapp-image-2026-05-31-at-12611-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414936/orbit-platform/1782414935856-980128474-whatsapp-image-2026-05-31-at-12609-am.jpg"
+      ],
+      "category": "HAIR",
+      "tags": [],
+      "customFields": null,
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isValueCombo": false,
+      "isNewArrival": false,
+      "isActive": true,
+      "createdAt": "2026-06-25T19:16:52.459Z",
+      "variants": [],
+      "reviews": [],
+      "averageRating": null,
+      "reviewCount": 0
+    },
+    {
+      "id": "3a80b8fc-3ab3-48d0-9993-11d2ea2a9609",
+      "slug": "zennova-shilajit-pure-himalayan-power-advanced-gold-grade-formula",
+      "name": "Zennova Shilajit – Pure Himalayan Power (Advanced Gold Grade Formula) ",
+      "description": "Tap into ancient vitality with Zennova Shilajit. Sourced from the pristine, high-altitude peaks of the Himalayas, this Advanced Gold Grade Formula delivers one of nature's most potent rejuvenating substances. Rich in Fulvic Acid and packed with over 84 minerals, Zennova Shilajit is engineered to supercharge your cellular energy, boost natural testosterone, elevate strength, and maximize daily physical and mental performance. Experience the raw, natural power of authentic Himalayan wellness.",
+      "price": "1299",
+      "compareAtPrice": "1560",
+      "sku": "ZN01",
+      "stock": 10,
+      "images": [
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414716497-463138422-whatsapp-image-2026-05-31-at-31116-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414715/orbit-platform/1782414713874-569490726-whatsapp-image-2026-05-31-at-12249-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414715/orbit-platform/1782414713882-419392640-whatsapp-image-2026-05-31-at-12448-am-1.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414716/orbit-platform/1782414714716-552684244-whatsapp-image-2026-05-31-at-35211-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414715499-560472418-whatsapp-image-2026-05-31-at-12446-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414715691-885360346-whatsapp-image-2026-05-31-at-12448-am.jpg",
+        "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414716493-218950550-whatsapp-image-2026-05-31-at-12447-am.jpg"
+      ],
+      "category": "BODY",
+      "tags": [],
+      "customFields": null,
+      "isFeatured": true,
+      "isBestSeller": false,
+      "isValueCombo": false,
+      "isNewArrival": false,
+      "isActive": true,
+      "createdAt": "2026-06-25T19:12:25.184Z",
+      "variants": [],
+      "reviews": [],
+      "averageRating": null,
+      "reviewCount": 0
+    }
+  ],
+  "frontend": {
+    "success": true,
+    "store": {
+      "id": "fd14721b-4480-4600-a6d2-d05fa6464cee",
+      "name": "ZEN NOVA ",
+      "subdomain": "zenova",
+      "customDomain": null,
+      "description": "ZEN NOVA  - cosmetics store",
+      "logo": null,
+      "category": "cosmetics",
+      "theme": "beauty_1",
+      "createdAt": "2026-06-25T19:04:57.996Z"
+    },
+    "customization": {
+      "logo": null,
+      "favicon": null,
+      "brandColors": {
+        "accent": "#8b5cf6",
+        "primary": "#6366f1",
+        "secondary": "#ec4899"
+      },
+      "typography": {
+        "bodyFont": "Inter",
+        "fontFamily": "Inter",
+        "headingFont": "Inter"
+      },
+      "heroSection": {
+        "title": "Welcome to ZEN NOVA ",
+        "slides": [
+          {
+            "id": "slide-bootstrap",
+            "title": "Welcome to ZEN NOVA ",
+            "ctaLink": "/shop",
+            "ctaText": "Shop Now",
+            "subtitle": "Discover amazing cosmetics products",
+            "backgroundImage": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782501887/orbit-platform/1782501885853-757538679-cde.webp"
+          },
+          {
+            "id": "slide-1782490082033",
+            "title": "New Banner Headline",
+            "ctaLink": "/catalogue",
+            "ctaText": "Shop Now",
+            "subtitle": "Short tagline or sub-message...",
+            "backgroundImage": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782500644/orbit-platform/1782500643034-443648752-abc.webp"
+          }
+        ],
+        "ctaLink": "/shop",
+        "ctaText": "Shop Now",
+        "subtitle": "Discover amazing cosmetics products"
+      },
+      "aboutSection": {
+        "title": "About ZEN NOVA ",
+        "content": "ZEN NOVA  is your trusted source for quality cosmetics products."
+      },
+      "footerContent": {
+        "links": [],
+        "copyright": "© 2026 ZEN NOVA . All rights reserved."
+      },
+      "contactInfo": {
+        "email": "sudarshansingh0808@gmail.com",
+        "phone": "",
+        "address": ""
+      },
+      "headerConfig": {
+        "logoUrl": "",
+        "storeName": ""
+      },
+      "footerConfig": {
+        "showAbout": true,
+        "showContact": true,
+        "showSocial": true,
+        "showNewsletter": true
+      },
+      "homePageConfig": {
+        "imageUrl": "",
+        "videoUrl": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782539683/orbit-platform/1782539682493-52971036-fit.webp",
+        "mediaType": "image"
+      },
+      "socialLinks": {
+        "twitter": "",
+        "facebook": "",
+        "linkedin": "",
+        "instagram": ""
+      },
+      "navLinks": [
+        {
+          "href": "/",
+          "label": "HOME"
+        }
+      ],
+      "ctaButtons": [],
+      "features": [],
+      "productSections": [],
+      "newsletter": null,
+      "announcementBar": null,
+      "metaTitle": "ZEN NOVA ",
+      "metaDescription": "Shop at ZEN NOVA  for quality cosmetics products",
+      "headerStyle": {
+        "style": "modern",
+        "selectedCategories": [],
+        "selectedStreams": [],
+        "selectedNavItems": []
+      },
+      "categoryImages": {
+        "body": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782492410/orbit-platform/1782492409676-712890218-xyz.webp",
+        "face": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782508467/orbit-platform/1782508466778-948768000-FACE.webp",
+        "hair": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782508497/orbit-platform/1782508496215-20361909-HAIR.webp",
+        "shape": "circle",
+        "body care": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782508417/orbit-platform/1782508416892-896437923-BODY%20CARE.webp"
+      },
+      "reelsSection": {
+        "reels": [
+          {
+            "id": "reel-1782590355413",
+            "sub": "Elevate Your Performance",
+            "title": "Science-backed men's health and fitness essentials designed to boost strength, vitality, and confidence—every single day.",
+            "ctaLink": "",
+            "category": "",
+            "videoUrl": "https://res.cloudinary.com/dsj1swlkk/video/upload/v1782590375/orbit-platform/1782590374015-681384224-v1.mp4"
+          },
+          {
+            "id": "reel-1782590513902",
+            "sub": "Power Your Potential",
+            "title": "Premium wellness products crafted to help you perform better, recover faster, and live stronger.",
+            "ctaLink": "",
+            "category": "",
+            "videoUrl": "https://res.cloudinary.com/dsj1swlkk/video/upload/v1782590526/orbit-platform/1782590524296-571267481-v2.mp4"
+          },
+          {
+            "id": "reel-1782590557329",
+            "sub": "Built for Modern Men",
+            "title": "Trusted healthcare and fitness solutions to support your wellness journey from the inside out.",
+            "ctaLink": "",
+            "category": "",
+            "videoUrl": "https://res.cloudinary.com/dsj1swlkk/video/upload/v1782590570/orbit-platform/1782590568370-30171661-v3.mp4"
+          },
+          {
+            "id": "reel-1782590625328",
+            "sub": "Fuel Your Strength. Own Your Day.",
+            "title": "Discover high-quality supplements and wellness products that help you stay energized, focused, and confident.",
+            "ctaLink": "",
+            "category": "",
+            "videoUrl": "https://res.cloudinary.com/dsj1swlkk/video/upload/v1782590636/orbit-platform/1782590634674-446948517-v4.mp4"
+          },
+          {
+            "id": "reel-1782590663050",
+            "sub": "Wellness Without Compromise",
+            "title": "Premium men's healthcare solutions made with quality ingredients for those who expect more from their health.",
+            "ctaLink": "",
+            "category": "",
+            "videoUrl": "https://res.cloudinary.com/dsj1swlkk/video/upload/v1782590678/orbit-platform/1782590677057-742782449-v5.mp4"
+          }
+        ],
+        "enabled": true
+      },
+      "testimonialsSection": null,
+      "bannersSection": {
+        "banners": [
+          {
+            "id": "banner-1782541414963",
+            "link": "",
+            "image": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782541424/orbit-platform/1782541423372-844657330-fit.webp",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "openInNewTab": false
+          },
+          {
+            "id": "banner-1782541435896",
+            "link": "",
+            "image": "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782541494/orbit-platform/1782541493081-800076090-detox.webp",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "openInNewTab": false
+          }
+        ],
+        "enabled": true
+      },
+      "metaPixel": null
+    },
+    "settings": {
+      "currency": "USD",
+      "timezone": "UTC",
+      "contactEmail": "sudarshansingh0808@gmail.com",
+      "contactPhone": "",
+      "enabledGateways": {}
+    },
+    "announcements": [],
+    "legalPages": [],
+    "products": [
+      {
+        "id": "a19d101e-3c9b-417c-9084-b4c9601801ab",
+        "slug": "zennova-ashwagandha-premium-stress-immune-support",
+        "name": "Zennova Ashwagandha – Premium Stress & Immune Support",
+        "description": "Experience the power of nature with Zennova Ashwagandha, a premium herbal supplement designed to support your body and mind naturally. Made with high-quality Ashwagandha extract, this powerful adaptogen helps reduce stress, improve energy levels, support immunity, and promote overall wellness.\n\n",
+        "price": "600",
+        "compareAtPrice": "800",
+        "sku": "",
+        "stock": 1000,
+        "images": [
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416348524-755608249-whatsapp-image-2026-05-31-at-42031-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416348/orbit-platform/1782416347079-367673211-whatsapp-image-2026-05-31-at-12249-am-1%20%283%29.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416348/orbit-platform/1782416347082-348151910-whatsapp-image-2026-05-31-at-12550-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416347890-990365026-whatsapp-image-2026-05-31-at-12548-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416347893-57453592-whatsapp-image-2026-05-31-at-12548-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416349/orbit-platform/1782416347897-658322615-whatsapp-image-2026-05-31-at-12550-am.jpg"
+        ],
+        "category": "BODY CARE",
+        "tags": [],
+        "customFields": null,
+        "isFeatured": true,
+        "isBestSeller": false,
+        "isValueCombo": false,
+        "isNewArrival": false,
+        "isActive": true,
+        "createdAt": "2026-06-25T19:43:04.753Z",
+        "variants": [],
+        "reviews": [],
+        "averageRating": null,
+        "reviewCount": 0
+      },
+      {
+        "id": "9b5a64ad-dffc-4d9d-869e-443d1feb84f3",
+        "slug": "zennova-fat-burne-thermogenic-formula",
+        "name": "Zennova Fat Burne - Thermogenic formula",
+        "description": "Zennova Fat Burner is an advanced thermogenic formula designed to support weight management, boost metabolism, and enhance daily energy levels. Crafted with powerful ingredients, this premium supplement helps support fat-burning processes naturally while assisting with appetite control, workout performance, and overall fitness goals.\n\n",
+        "price": "1120",
+        "compareAtPrice": "1360",
+        "sku": "",
+        "stock": 1000,
+        "images": [
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416284/orbit-platform/1782416283320-884158586-whatsapp-image-2026-05-31-at-40352-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416271901-810048716-whatsapp-image-2026-05-31-at-12249-am-1%20%282%29.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416271905-334988898-whatsapp-image-2026-05-31-at-12510-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416272543-195991833-whatsapp-image-2026-05-31-at-12509-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416273/orbit-platform/1782416272546-178724085-whatsapp-image-2026-05-31-at-12508-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416274/orbit-platform/1782416272972-972575891-whatsapp-image-2026-05-31-at-12510-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782416274/orbit-platform/1782416272974-827838305-whatsapp-image-2026-05-31-at-12509-am.jpg"
+        ],
+        "category": "FACE",
+        "tags": [],
+        "customFields": null,
+        "isFeatured": false,
+        "isBestSeller": false,
+        "isValueCombo": false,
+        "isNewArrival": false,
+        "isActive": true,
+        "createdAt": "2026-06-25T19:38:30.294Z",
+        "variants": [],
+        "reviews": [],
+        "averageRating": null,
+        "reviewCount": 0
+      },
+      {
+        "id": "988c8a62-d707-40ac-bb81-00b951d113cb",
+        "slug": "zennova-lungs-detox",
+        "name": "Zennova Lungs Detox",
+        "description": "Zennova Lungs Detox is an advanced lung cleanse formula specially designed to support respiratory health, clear airways, and promote easier breathing. Crafted with powerful herbal and wellness-support ingredients, this premium supplement helps support the body’s natural detoxification process while maintaining healthy lung function and respiratory comfort.",
+        "price": "1130",
+        "compareAtPrice": "1559",
+        "sku": "ZN02",
+        "stock": 997,
+        "images": [
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414954/orbit-platform/1782414953618-68186256-whatsapp-image-2026-05-31-at-35910-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414935/orbit-platform/1782414933747-833822800-whatsapp-image-2026-05-31-at-12249-am-1%20%281%29.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414935/orbit-platform/1782414933752-580480125-whatsapp-image-2026-05-31-at-12610-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414935/orbit-platform/1782414934365-351897372-whatsapp-image-2026-05-31-at-12609-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414936/orbit-platform/1782414935019-350308369-whatsapp-image-2026-05-31-at-12610-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414936/orbit-platform/1782414935022-175927184-whatsapp-image-2026-05-31-at-12611-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414936/orbit-platform/1782414935856-980128474-whatsapp-image-2026-05-31-at-12609-am.jpg"
+        ],
+        "category": "HAIR",
+        "tags": [],
+        "customFields": null,
+        "isFeatured": true,
+        "isBestSeller": false,
+        "isValueCombo": false,
+        "isNewArrival": false,
+        "isActive": true,
+        "createdAt": "2026-06-25T19:16:52.459Z",
+        "variants": [],
+        "reviews": [],
+        "averageRating": null,
+        "reviewCount": 0
+      },
+      {
+        "id": "3a80b8fc-3ab3-48d0-9993-11d2ea2a9609",
+        "slug": "zennova-shilajit-pure-himalayan-power-advanced-gold-grade-formula",
+        "name": "Zennova Shilajit – Pure Himalayan Power (Advanced Gold Grade Formula) ",
+        "description": "Tap into ancient vitality with Zennova Shilajit. Sourced from the pristine, high-altitude peaks of the Himalayas, this Advanced Gold Grade Formula delivers one of nature's most potent rejuvenating substances. Rich in Fulvic Acid and packed with over 84 minerals, Zennova Shilajit is engineered to supercharge your cellular energy, boost natural testosterone, elevate strength, and maximize daily physical and mental performance. Experience the raw, natural power of authentic Himalayan wellness.",
+        "price": "1299",
+        "compareAtPrice": "1560",
+        "sku": "ZN01",
+        "stock": 10,
+        "images": [
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414716497-463138422-whatsapp-image-2026-05-31-at-31116-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414715/orbit-platform/1782414713874-569490726-whatsapp-image-2026-05-31-at-12249-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414715/orbit-platform/1782414713882-419392640-whatsapp-image-2026-05-31-at-12448-am-1.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414716/orbit-platform/1782414714716-552684244-whatsapp-image-2026-05-31-at-35211-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414715499-560472418-whatsapp-image-2026-05-31-at-12446-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414715691-885360346-whatsapp-image-2026-05-31-at-12448-am.jpg",
+          "https://res.cloudinary.com/dsj1swlkk/image/upload/v1782414717/orbit-platform/1782414716493-218950550-whatsapp-image-2026-05-31-at-12447-am.jpg"
+        ],
+        "category": "BODY",
+        "tags": [],
+        "customFields": null,
+        "isFeatured": true,
+        "isBestSeller": false,
+        "isValueCombo": false,
+        "isNewArrival": false,
+        "isActive": true,
+        "createdAt": "2026-06-25T19:12:25.184Z",
+        "variants": [],
+        "reviews": [],
+        "averageRating": null,
+        "reviewCount": 0
+      }
+    ],
+    "categories": [
+      "BODY",
+      "BODY CARE",
+      "FACE",
+      "HAIR"
+    ],
+    "bundles": [
+      {
+        "id": "fd1fc42d-3f39-43fd-a2ed-085fc05e62c2",
+        "storeId": "fd14721b-4480-4600-a6d2-d05fa6464cee",
+        "title": "Buy Any 3 Supplements @ ₹1499",
+        "bundlePrice": 1499,
+        "requiredQuantity": 3,
+        "mode": "CATEGORY",
+        "bundleMode": "CATEGORY",
+        "categoryId": "bccc6c9a-73ae-4d0d-a349-750bb347c0e0",
+        "category": {
+          "id": "bccc6c9a-73ae-4d0d-a349-750bb347c0e0",
+          "name": "SUPPLEMENTS",
+          "slug": "supplements",
+          "color": "#6366f1"
+        },
+        "selectedProducts": [],
+        "isActive": true,
+        "startDate": "2026-06-28T00:00:00.000Z",
+        "endDate": null,
+        "createdAt": "2026-06-28T11:23:50.855Z",
+        "updatedAt": "2026-06-28T11:23:50.855Z"
+      }
+    ],
+    "theme": {
+      "id": "9c42559a-aca7-4028-93b0-bec5ff3d5ca1",
+      "name": "Beauty_1",
+      "slug": "beauty_1",
+      "category": null
+    }
+  }
+}

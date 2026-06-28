@@ -19,15 +19,10 @@ export default function AddToCartButton({
     <button
       type="button"
       className={`tp-product-add-cart-btn-large ${className}`.trim()}
-      data-bb-toggle="quick-shop"
-      data-url={`/ajax/quick-shop/${product.slug}`}
-      data-product-id={product.id}
-      data-product-name={product.name}
-      data-product-price={product.price}
-      data-product-sku={product.sku || ""}
-      data-product-category={product.category || ""}
-      data-product-categories={product.category || ""}
-      title="Quick Shop"
+      data-bb-toggle="add-to-cart"
+      data-url="/ajax/cart-content"
+      data-id={product.id}
+      title="Add To Cart"
     >
       <CartIcon />
       {label}

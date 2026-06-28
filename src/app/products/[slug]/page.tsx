@@ -2,6 +2,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { getProduct } from "@/lib/api";
+import WishlistDetailButton from "@/app/components/products/WishlistDetailButton";
 
 export default async function ProductDetails({
   params
@@ -94,19 +95,23 @@ export default async function ProductDetails({
                 </div>
 
                 {/* Actions */}
-                <div className="tp-product-details-action d-flex flex-wrap align-items-center gap-3">
-                  <div className="tp-product-details-quantity">
-                    <div className="tp-product-quantity">
-                      <input type="number" className="form-control bg-dark text-white text-center border-secondary" defaultValue={1} min={1} style={{ width: "80px", height: "45px" }} />
+                <form action="/ajax/cart-content" method="POST" data-bb-toggle="product-form">
+                  <input type="hidden" name="id" value={product.id} />
+                  <div className="tp-product-details-action d-flex flex-wrap align-items-center gap-3">
+                    <div className="tp-product-details-quantity">
+                      <div className="tp-product-quantity">
+                        <input type="number" name="qty" className="form-control bg-dark text-white text-center border-secondary" defaultValue={1} min={1} max={product.stock} style={{ width: "80px", height: "45px" }} />
+                      </div>
                     </div>
+                    <button type="submit" name="add-to-cart" className="tp-btn text-white bg-warning hover-dark-btn py-3 px-5 rounded" style={{ height: "45px", border: "none", fontWeight: "bold" }}>
+                      Add To Cart
+                    </button>
+                    <button type="submit" name="checkout" className="tp-btn text-white bg-white hover-orange py-3 px-5 rounded" style={{ height: "45px", border: "1px solid #fff", color: "#000 !important", fontWeight: "bold" }}>
+                      Buy Now
+                    </button>
+                    <WishlistDetailButton productId={product.id} />
                   </div>
-                  <button className="tp-btn text-white bg-warning hover-dark-btn py-3 px-5 rounded" style={{ height: "45px", border: "none", fontWeight: "bold" }}>
-                    Add To Cart
-                  </button>
-                  <button className="tp-btn text-white bg-white hover-orange py-3 px-5 rounded" style={{ height: "45px", border: "1px solid #fff", color: "#000 !important", fontWeight: "bold" }}>
-                    Buy Now
-                  </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>

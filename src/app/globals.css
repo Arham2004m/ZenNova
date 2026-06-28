@@ -2172,3 +2172,172 @@ a {
     padding: 0;
   }
 }
+
+/* Dynamic Scrollable Cart Panel and Custom Orange Scrollbar */
+.cartmini__widget {
+  max-height: calc(100vh - 280px) !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #f37324 #1a1a1a !important;
+  padding-right: 4px !important;
+}
+
+.cartmini__widget::-webkit-scrollbar {
+  display: block !important;
+  width: 6px !important;
+}
+
+.cartmini__widget::-webkit-scrollbar-track {
+  background: #1a1a1a !important;
+  border-radius: 3px !important;
+}
+
+.cartmini__widget::-webkit-scrollbar-thumb {
+  background-color: #f37324 !important;
+  border-radius: 3px !important;
+}
+
+/* Remove default white backgrounds on checkout areas */
+.cartmini__checkout {
+  background: #111113 !important;
+  border-top: 1px solid #222226 !important;
+  padding-bottom: 25px !important;
+  padding-top: 20px !important;
+}
+
+/* Premium dark-theme styling for the mini-cart quantity picker */
+.cartmini__content .tp-product-quantity {
+  background-color: #1a1a1c !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 4px !important;
+  display: block !important;
+  height: 32px !important;
+  position: relative !important;
+  width: 80px !important;
+}
+
+.cartmini__content .tp-product-quantity .tp-cart-input[type=text] {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  height: 30px !important;
+  width: 100% !important;
+  text-align: center !important;
+  padding: 0 20px !important;
+}
+
+.cartmini__content .tp-product-quantity .tp-cart-minus,
+.cartmini__content .tp-product-quantity .tp-cart-plus {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 16px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  width: 20px !important;
+  transition: color 0.2s ease !important;
+}
+
+.cartmini__content .tp-product-quantity .tp-cart-minus:hover,
+.cartmini__content .tp-product-quantity .tp-cart-plus:hover {
+  color: #ff6b00 !important;
+}
+
+/* Premium styled remove button (cross icon) */
+.cartmini__del {
+  background-color: #f37324 !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 24px !important;
+  width: 24px !important;
+  right: 0 !important;
+  top: 20px !important;
+  transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+.cartmini__del:hover {
+  background-color: #d15a16 !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+.cartmini__del svg {
+  stroke: #ffffff !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* Cart widget items alignment and colors */
+.cartmini__widget-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.cartmini__title a {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  transition: color 0.2s ease !important;
+}
+
+.cartmini__title a:hover {
+  color: #f37324 !important;
+}
+
+.cartmini__price {
+  color: #f37324 !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+/* Premium Wishlist Table Dark Styling */
+.hover-orange {
+  transition: color 0.2s ease !important;
+}
+
+.hover-orange:hover {
+  color: #f37324 !important;
+}
+
+.tp-cart-list {
+  background-color: #111113 !important;
+}
+
+.tp-cart-list thead {
+  background-color: #1c1c1f !important;
+}
+
+.tp-cart-list table {
+  background: transparent !important;
+  border-collapse: collapse !important;
+}
+
+.tp-cart-list thead th {
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 2px solid #222226 !important;
+  padding: 15px 10px !important;
+}
+
+.tp-cart-list tbody tr {
+  border-bottom: 1px solid #1c1c1f !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.tp-cart-list tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.tp-cart-list tbody td {
+  padding: 20px 10px !important;
+  border: none !important;
+}
+
+.tp-cart-action-btn:hover {
+  color: #ff1826 !important;
+}
