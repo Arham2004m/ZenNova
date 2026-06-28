@@ -53,24 +53,28 @@ export default function WishlistDetailButton({ productId }: Props) {
   return (
     <button
       type="button"
-      className={`tp-product-add-to-wishlist-btn tp-product-action-btn rounded d-flex align-items-center justify-content-center ${isInWishlist ? "active" : ""}`}
+      className={`zn-product-details-wishlist tp-product-add-to-wishlist-btn ${isInWishlist ? "is-active" : ""}`}
       data-bb-toggle="add-to-wishlist"
       title={tooltipText}
+      aria-label={tooltipText}
       data-url={`/wishlist/${productId}`}
       data-add-text="Add To Wishlist"
       data-remove-text="Remove From Wishlist"
-      style={{
-        width: "45px",
-        height: "45px",
-        border: "1px solid rgba(255, 255, 255, 0.12)",
-        backgroundColor: isInWishlist ? "#f37324" : "rgba(255, 255, 255, 0.05)",
-        color: "#fff",
-      }}
     >
-      <svg className="icon svg-icon-ti-ti-heart" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill={isInWishlist ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M19.5 12.572l-7.5 7.428l-7.5-7.428m0 0a5 5 0 1 1 7.5-6.566a5 5 0 1 1 7.5 6.572" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill={isInWishlist ? "currentColor" : "none"}
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M19.5 12.572l-7.5 7.428l-7.5-7.428a5 5 0 1 1 7.5-6.566 5 5 0 1 1 7.5 6.572" />
       </svg>
-      <span className="tp-product-tooltip">{tooltipText}</span>
     </button>
   );
 }

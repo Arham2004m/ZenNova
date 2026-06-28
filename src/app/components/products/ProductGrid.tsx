@@ -11,10 +11,10 @@ type Props = {
 
 export default function ProductGrid({
   products,
-  columnsClassName = "col-xl-3 col-lg-4 col-md-6 col-sm-6 mb-40",
+  columnsClassName = "col-6 col-md-6 col-lg-4 col-xl-3 d-flex",
 }: Props) {
   return (
-    <div className="row zn-product-grid">
+    <div className="row zn-product-grid g-3 g-md-4">
       {products.map((product) => (
         <div className={columnsClassName} key={product.id}>
           <ProductCard product={product} showCountdown={false} />

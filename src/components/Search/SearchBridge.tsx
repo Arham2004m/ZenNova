@@ -27,18 +27,20 @@ export default function SearchBridge() {
     let activeController: AbortController | null = null;
 
     const openSearch = () => {
-      document.querySelector(".tp-search-area")?.classList.add("opened");
+      document.querySelector(".zn-header-search-host")?.classList.add("opened");
+      document.querySelector(".tp-search-area.zn-header-search-host")?.classList.add("opened");
       document.querySelector(".body-overlay")?.classList.add("opened");
       window.setTimeout(() => {
         const input = document.querySelector<HTMLInputElement>(
-          "#bb-form-quick-search-mobile input[name='q']"
+          "#bb-form-quick-search input[name='q']"
         );
         input?.focus();
       }, 120);
     };
 
     const closeSearch = () => {
-      document.querySelector(".tp-search-area")?.classList.remove("opened");
+      document.querySelector(".zn-header-search-host")?.classList.remove("opened");
+      document.querySelector(".tp-search-area.zn-header-search-host")?.classList.remove("opened");
       document.querySelector(".body-overlay")?.classList.remove("opened");
       document.querySelectorAll(".bb-quick-search-results").forEach((node) => {
         node.classList.remove("show");
@@ -92,7 +94,15 @@ export default function SearchBridge() {
         return;
       }
 
-      if (target.closest(".tp-search-close-btn")) {
+      if (
+        target.classList.contains("body-overlay") ||
+        target.closest(".body-overlay")
+      ) {
+        closeSearch();
+        return;
+      }
+
+      if (target.closest(".tp-search-close-btn, .zn-header-search-host__close")) {
         event.preventDefault();
         closeSearch();
         return;

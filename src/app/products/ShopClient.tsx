@@ -426,37 +426,8 @@ export default function ShopClient({
           {categoryPage && (
             <h1 className="zn-category-shop-title">{categoryPage.title}</h1>
           )}
-          <div className="row zn-shop-toolbar-row g-3 align-items-center">
-            <div className="col-xl-3 col-lg-4">
-              <div className="tp-sidebar-search-input zn-shop-toolbar-search">
-                <input
-                  type="search"
-                  placeholder="Search..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button type="button" aria-label="Search">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path
-                      d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M14 14L11.1 11.1"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="col-xl-9 col-lg-8">
+          <div className="row zn-shop-toolbar-row g-3 align-items-center justify-content-end">
+            <div className="col-12">
               <div className="tp-shop-top zn-shop-top">
                 <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
                   <div className="tp-shop-top-left d-flex align-items-center gap-3 flex-wrap">
@@ -665,10 +636,10 @@ export default function ShopClient({
                       ))}
                     </div>
                   ) : (
-                    <div className="row zn-product-grid g-4">
+                    <div className="row zn-product-grid g-3 g-md-4">
                       {visibleProducts.map((product) => (
                         <div
-                          className="col-xl-4 col-lg-6 col-md-6 col-sm-6 d-flex"
+                          className="col-6 col-md-6 col-lg-4 col-xl-3 d-flex"
                           key={product.id}
                         >
                           <ProductCard

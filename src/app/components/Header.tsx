@@ -3,6 +3,7 @@ import { getFrontend } from "@/lib/api";
 import { cookies } from "next/headers";
 import { getCartDetails } from "@/lib/cart";
 import { getWishlist } from "@/lib/wishlist";
+import HeaderSearchForm from "./HeaderSearchForm";
 
 export default async function Header() {
   let logoUrl = "/storage/logot.webp";
@@ -198,41 +199,6 @@ export default async function Header() {
             </div>
         </div>
     </div>
-    <section className="tp-search-area">
-        <div className="container">
-            <div className="row">
-                <div className="col-xl-12">
-                    <div className="tp-search-form">
-                        <div className="mb-20 text-center tp-search-close">
-                            <button type="button" className="tp-search-close-btn" aria-label="Close search"></button>
-                        </div>
-                        <form role="search" action="/products" data-ajax-url="/ajax/search-products" method="GET" className="bb-form-quick-search" id="bb-form-quick-search-mobile">
-                            <div className="mb-10 tp-search-input">
-                                <input type="search" name="q" placeholder="Search for Products..." autoComplete="off" />
-                                <button type="submit" title="Search"><svg className="icon  svg-icon-ti-ti-search"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-  <path d="M21 21l-6 -6" />
-</svg></button>
-                            </div>
-
-                            <div className="bb-quick-search-results"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <div className="cartmini__area">
         <div className="cartmini__wrapper d-flex justify-content-between flex-column">
             <div className="cartmini__top-wrapper">
@@ -385,36 +351,8 @@ export default async function Header() {
 
                         </div>
 
-                        <div className="col-xl-6 col-lg-7 d-none d-lg-block pl-70">
-                            <form role="search" action="/products" data-ajax-url="/ajax/search-products" method="GET" className="bb-form-quick-search tp-header-search" id="bb-form-quick-search-desktop">
-                                <div className="tp-header-search-wrapper d-flex align-items-center">
-                                    <div className="tp-header-search-box">
-                                        <input type="search" name="q" placeholder="Search for Products..." autoComplete="off" />
-                                    </div>
-
-                                    <div className="tp-header-search-btn">
-                                        <button type="submit" title="Search">
-                <svg className="icon  svg-icon-ti-ti-search"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  >
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-  <path d="M21 21l-6 -6" />
-</svg>            </button>
-                                    </div>
-                                </div>
-
-                                <div className="bb-quick-search-results"></div>
-                            </form>
-
+                        <div className="col-xl-6 col-lg-7 zn-header-search-col">
+                            <HeaderSearchForm />
                         </div>
                         <div className="col-xl-4 col-lg-3 col-md-8 col-6">
                             <div className="tp-header-main-right d-flex align-items-center justify-content-end">

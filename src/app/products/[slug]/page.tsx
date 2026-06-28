@@ -2,7 +2,8 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { getProduct } from "@/lib/api";
-import WishlistDetailButton from "@/app/components/products/WishlistDetailButton";
+import ProductDetailActions from "@/app/components/products/ProductDetailActions";
+import { formatPrice } from "@/app/components/products/productUtils";
 
 export default async function ProductDetails({
   params
@@ -37,7 +38,7 @@ export default async function ProductDetails({
       </section>
 
       {/* Product Details Section */}
-      <section className="tp-product-details-area pt-100 pb-100">
+      <section className="tp-product-details-area zn-product-details-page pt-100 pb-100">
         <div className="container">
           <div className="row">
             {/* Image Column */}
@@ -72,9 +73,13 @@ export default async function ProductDetails({
                 </div>
 
                 {/* Prices */}
-                <div className="tp-product-details-price-wrapper mb-20">
-                  <span className="tp-product-details-price new-price text-warning" style={{ fontSize: "28px", fontWeight: "bold" }}>₹{product.price}</span>
-                  <span className="tp-product-details-price old-price text-white-50 ml-15" style={{ fontSize: "20px" }}><del>₹{product.compareAtPrice}</del></span>
+                <div className="tp-product-details-price-wrapper zn-product-details-price mb-20">
+                  <span className="tp-product-details-price new-price">₹{formatPrice(product.price)}</span>
+                  {product.compareAtPrice && (
+                    <span className="tp-product-details-price old-price">
+                      <del>₹{formatPrice(product.compareAtPrice)}</del>
+                    </span>
+                  )}
                 </div>
 
                 {/* Summary */}
@@ -95,23 +100,7 @@ export default async function ProductDetails({
                 </div>
 
                 {/* Actions */}
-                <form action="/ajax/cart-content" method="POST" data-bb-toggle="product-form">
-                  <input type="hidden" name="id" value={product.id} />
-                  <div className="tp-product-details-action d-flex flex-wrap align-items-center gap-3">
-                    <div className="tp-product-details-quantity">
-                      <div className="tp-product-quantity">
-                        <input type="number" name="qty" className="form-control bg-dark text-white text-center border-secondary" defaultValue={1} min={1} max={product.stock} style={{ width: "80px", height: "45px" }} />
-                      </div>
-                    </div>
-                    <button type="submit" name="add-to-cart" className="tp-btn text-white bg-warning hover-dark-btn py-3 px-5 rounded" style={{ height: "45px", border: "none", fontWeight: "bold" }}>
-                      Add To Cart
-                    </button>
-                    <button type="submit" name="checkout" className="tp-btn text-white bg-white hover-orange py-3 px-5 rounded" style={{ height: "45px", border: "1px solid #fff", color: "#000 !important", fontWeight: "bold" }}>
-                      Buy Now
-                    </button>
-                    <WishlistDetailButton productId={product.id} />
-                  </div>
-                </form>
+                <ProductDetailActions productId={product.id} stock={product.stock} />
               </div>
             </div>
           </div>

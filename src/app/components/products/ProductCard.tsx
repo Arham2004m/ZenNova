@@ -86,7 +86,7 @@ export default function ProductCard({
           shopListView ? "zn-shop-list-card__content" : ""
         }`}
       >
-        <h3 className={`tp-product-title ${shopLayout ? "zn-shop-product-card__title" : "text-truncate"}`}>
+        <h3 className={`tp-product-title zn-product-card__title ${shopLayout ? "zn-shop-product-card__title" : ""}`}>
           <a href={`/products/${product.slug}`} title={product.name}>
             {product.name}
           </a>
