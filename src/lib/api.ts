@@ -1,50 +1,45 @@
+import fs from "fs";
+import path from "path";
+import "server-only";
+
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-// Dynamically load server-only modules to prevent webpack issues in client bundles
-let fs: any = null;
-let path: any = null;
-if (typeof window === "undefined") {
-  try {
-    fs = require("fs");
-    path = require("path");
-  } catch (e) {
-    console.warn("Failed to load fs/path modules:", e);
-  }
+interface CacheData {
+  frontend?: unknown;
+  products?: unknown;
 }
 
-function getFallbackData() {
-  if (!fs || !path) return null;
+function getFallbackData(): CacheData | null {
   try {
     const cachePath = path.join(process.cwd(), "src/lib/api-cache.json");
     if (fs.existsSync(cachePath)) {
       try {
-        return JSON.parse(fs.readFileSync(cachePath, "utf-8"));
-      } catch (inner) {
+        return JSON.parse(fs.readFileSync(cachePath, "utf-8")) as CacheData;
+      } catch {
         // Return null if file is temporarily empty/being written to
         return null;
       }
     }
-  } catch (e) {
+  } catch {
     // Suppress console error logs for concurrent worker reads
   }
   return null;
 }
 
-function saveToCache(key: "frontend" | "products", data: any) {
-  if (!fs || !path) return;
+function saveToCache(key: "frontend" | "products", data: unknown) {
   try {
     const cachePath = path.join(process.cwd(), "src/lib/api-cache.json");
-    let currentCache: any = {};
+    let currentCache: Record<string, unknown> = {};
     if (fs.existsSync(cachePath)) {
       try {
-        currentCache = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
-      } catch (inner) {
+        currentCache = JSON.parse(fs.readFileSync(cachePath, "utf-8")) as Record<string, unknown>;
+      } catch {
         // Fallback to empty cache on collision
       }
     }
     currentCache[key] = data;
     fs.writeFileSync(cachePath, JSON.stringify(currentCache, null, 2), "utf-8");
-  } catch (e) {
+  } catch {
     // Suppress console error logs for concurrent worker writes
   }
 }
@@ -115,8 +110,10 @@ export async function getProduct(slug: string) {
   } catch (e) {
     console.error(`getProduct for slug ${slug} failed, checking cache:`, e);
     const fallback = getFallbackData();
-    if (fallback && fallback.products) {
-      const found = fallback.products.find((p: any) => p.slug === slug);
+    if (fallback && Array.isArray(fallback.products)) {
+      const found = fallback.products.find((p: unknown) => {
+        return typeof p === "object" && p !== null && "slug" in p && (p as { slug: unknown }).slug === slug;
+      });
       if (found) return found;
     }
     return null;
@@ -140,7 +137,9 @@ export async function getPages() {
 export async function getBundles() {
   try {
     const json = await getFrontend();
-    if (Array.isArray(json.bundles)) return json.bundles;
+    if (json && typeof json === "object" && "bundles" in json && Array.isArray(json.bundles)) {
+      return json.bundles;
+    }
     return [];
   } catch {
     return [];
@@ -175,28 +174,6 @@ export async function addBundleToCart(
   const json = await res.json().catch(() => ({}));
   if (!res.ok) {
     throw new Error(json.message || "Failed to add bundle to cart");
-  }
-  return json;
-}
-
-export async function createStoreOrder(payload: {
-  items: Array<
-    | { type: "BUNDLE"; bundleId: string; productIds: string[] }
-    | { type: "PRODUCT"; id: string; quantity: number }
-  >;
-  customer: Record<string, string>;
-  paymentMethod?: string;
-  couponCode?: string;
-}) {
-  const res = await fetch(`${BASE_URL}/orders`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-    cache: "no-store",
-  });
-  const json = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    throw new Error(json.message || "Failed to create order");
   }
   return json;
 }

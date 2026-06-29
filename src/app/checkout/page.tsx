@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCartContext } from "@/components/Cart/CartProvider";
 import { isBundleItem } from "@/types/cart";
-import { createStoreOrder } from "@/lib/api";
+import { createStoreOrder } from "@/lib/api-client";
 import { formatPrice } from "@/app/components/products/productUtils";
 import { sendOtp, verifyOtp, createSession, validateSession } from "@/actions/otp-actions";
 import { initiatePayUPayment } from "@/actions/payment-actions";

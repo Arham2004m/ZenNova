@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
-import { addBundleToCart } from "@/lib/api";
 import type { BundleOffer, BundleProduct } from "@/components/Bundle/types";
 
 function normalizeBundleProduct(product: BundleProduct): BundleProduct {
