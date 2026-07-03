@@ -219,7 +219,9 @@
 }
 
 @media (max-width: 575px) {
-  .checkout__row, .checkout__row--3 {
+
+  .checkout__row,
+  .checkout__row--3 {
     grid-template-columns: 1fr;
   }
 }
@@ -270,11 +272,11 @@
 .checkout__illustration-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 1px;
 }
 
 .checkout__illustration {
-  max-width: 140px;
+  max-width: 295px;
   height: auto;
   opacity: 0.85;
 }
@@ -1004,7 +1006,7 @@
   .checkout__section--sticky {
     padding-bottom: 100px;
   }
-  
+
   .checkout__mobile-sticky-bottom {
     display: block;
     position: fixed;

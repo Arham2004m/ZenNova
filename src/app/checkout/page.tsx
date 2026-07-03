@@ -143,7 +143,7 @@ export default function CheckoutPage() {
   const [customerFirstName, setCustomerFirstName] = useState("");
   const [customerLastName, setCustomerLastName] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
-  
+
   const [savedAddresses, setSavedAddresses] = useState<any[]>([]);
   const [selectedAddress, setSelectedAddress] = useState<any>(null);
   const [showAddressForm, setShowAddressForm] = useState(false);
@@ -162,7 +162,7 @@ export default function CheckoutPage() {
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [placedOrderId, setPlacedOrderId] = useState<string | null>(null);
-  
+
   const codFee = 40;
 
   useEffect(() => {
@@ -184,8 +184,8 @@ export default function CheckoutPage() {
     form.method = "POST";
 
     const isTestKey = payUData.key === "IWqFlM" || process.env.NEXT_PUBLIC_PAYU_SANDBOX === "true";
-    form.action = isTestKey 
-      ? "https://test.payu.in/_payment" 
+    form.action = isTestKey
+      ? "https://test.payu.in/_payment"
       : "https://secure.payu.in/_payment";
 
     Object.entries(payUData).forEach(([key, val]) => {
@@ -231,7 +231,7 @@ export default function CheckoutPage() {
           if (savedFirstName) setCustomerFirstName(savedFirstName);
           if (savedLastName) setCustomerLastName(savedLastName);
           if (savedEmail) setCustomerEmail(savedEmail);
-          
+
           // Check for URL status parameters from PayU callback redirection
           const urlParams = new URLSearchParams(window.location.search);
           const statusParam = urlParams.get("status");
@@ -291,7 +291,7 @@ export default function CheckoutPage() {
     setOtpLoading(true);
     setError(null);
     setOtp(["", "", "", ""]);
-    
+
     try {
       const result = await sendOtp({ phone });
       if (result.success) {
@@ -354,7 +354,7 @@ export default function CheckoutPage() {
     localStorage.setItem("zennova_saved_addresses", JSON.stringify(updated));
     setSelectedAddress(newAddress);
     setShowAddressForm(false);
-    
+
     setAddressForm({
       type: "HOME",
       flatHouse: "",
@@ -412,7 +412,7 @@ export default function CheckoutPage() {
       });
 
       const fullAddress = `${selectedAddress.flatHouse}, ${selectedAddress.areaStreet}`;
-      
+
       const payload = {
         items,
         customer: {
@@ -543,7 +543,11 @@ export default function CheckoutPage() {
           {step === "identify" && (
             <section className="checkout__section">
               <div className="checkout__illustration-container">
-                <ShieldCheckIcon size={64} className="text-warning mb-2" />
+                <img
+                  src="/storage/otp_illustration.png"
+                  alt="Phone Verification"
+                  className="checkout__illustration mb-2"
+                />
               </div>
               <h3 className="checkout__verification-title text-white">Verify Your Phone Number</h3>
               <p className="checkout__verification-desc text-white-50">
@@ -958,16 +962,16 @@ export default function CheckoutPage() {
         {/* Sidebar Order Summary Panel */}
         <aside className="checkout__summary-panel">
           <h3 className="checkout__summary-title text-white">Order Summary</h3>
-          
+
           <div className="checkout__summary-items">
             {cart.map((item, index) => {
               const image = isBundleItem(item)
                 ? "/storage/logot.webp"
                 : item.images?.[0] || "/storage/logot.webp";
-              
+
               const title = isBundleItem(item) ? item.title : item.name;
               const priceVal = isBundleItem(item) ? item.payable : Number(item.price) * item.quantity;
-              
+
               return (
                 <div key={index} className="checkout__summary-item">
                   <div className="checkout__summary-item-left">
@@ -990,14 +994,14 @@ export default function CheckoutPage() {
               <span>Subtotal</span>
               <span className="text-white">₹{formatPrice(subtotal)}</span>
             </div>
-            
+
             {paymentMethod === "cod" && (
               <div className="checkout__summary-row">
                 <span>COD Surcharge</span>
                 <span className="text-white">₹{codFee}</span>
               </div>
             )}
-            
+
             <div className="checkout__summary-row checkout__summary-row--total">
               <span>Total</span>
               <span>₹{formatPrice(paymentMethod === "cod" ? total + codFee : total)}</span>

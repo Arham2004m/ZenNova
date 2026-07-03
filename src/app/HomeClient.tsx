@@ -229,6 +229,88 @@ export default function HomeClient({ products, storeData }: Props) {
                 src: url(/storage/fonts/eeb4986ca8/soreganov15if2ixtpxcis3h4s2ozdvphvnzyi.woff2) format('woff2');
                 unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
             }
+            .tp-banner-height {
+                height: auto !important;
+            }
+            .zn-create-combo-btn-wrapper {
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                z-index: 10;
+            }
+            .zn-create-combo-btn {
+                background-color: #ff6b00;
+                color: #ffffff !important;
+                font-size: 15px;
+                font-weight: 700;
+                padding: 12px 28px;
+                border-radius: 50px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+            }
+            .zn-create-combo-btn:hover {
+                background-color: #ff812e;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 107, 0, 0.6);
+            }
+            @media (max-width: 767px) {
+                .zn-create-combo-btn-wrapper {
+                    bottom: 12px;
+                    right: 12px;
+                }
+                .zn-create-combo-btn {
+                    font-size: 10px;
+                    padding: 6px 14px;
+                    gap: 4px;
+                }
+                .zn-create-combo-btn svg {
+                    width: 10px;
+                    height: 8px;
+                }
+            }
+            @media (min-width: 992px) {
+                .zn-testimonial-area .container {
+                    max-width: 960px !important;
+                }
+            }
+            .zn-testimonial-area .swiper-slide {
+                height: auto !important;
+                display: flex !important;
+            }
+            .zn-testimonial-card {
+                height: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+                padding: 24px 28px !important;
+            }
+            .zn-testimonial-card .tp-testimonial-content-3 {
+                flex-grow: 1 !important;
+                margin-bottom: 15px !important;
+            }
+            .zn-testimonial-card .tp-testimonial-content-3 p {
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+            }
+            .zn-testimonial-card .tp-testimonial-user-wrapper-3 {
+                margin-top: auto !important;
+            }
+            @media (max-width: 767px) {
+                .zn-testimonial-card {
+                    padding: 20px 22px !important;
+                }
+                .zn-testimonial-card .tp-testimonial-content-3 p {
+                    font-size: 13px !important;
+                    line-height: 1.5 !important;
+                }
+            }
+        
         `,
           }}
         />
@@ -443,28 +525,14 @@ export default function HomeClient({ products, storeData }: Props) {
         <section className="tp-banner-area pt-30 pb-30">
           <div className="container">
             <div className="row">
-              <div className="col-xl-8 col-lg-7">
-                <div className="tp-banner-item tp-banner-height p-relative mb-30 z-index-1 fix">
-                  <div className="tp-banner-thumb include-bg transition-3">
-                    <a href={catalogueSlide?.ctaLink || "#"}>
-                      <img
-                        src={banners[0]?.image}
-                        alt={catalogueSlide?.title || "Catalogue"}
-                        style={{ width: "100%" }}
-                        loading="lazy"
-                      />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-4 col-lg-5">
+              <div className="col-12">
                 <div className="tp-banner-item tp-banner-height p-relative mb-30 z-index-1 fix">
                   <div className="tp-banner-thumb include-bg transition-3">
                     <a href={detoxBannerHref}>
                       <img
                         src={banners[1]?.image}
                         alt={banners[1]?.title || "Bundle offer"}
-                        style={{ width: "100%" }}
+                        style={{ width: "100%", height: "auto" }}
                         loading="lazy"
                       />
                     </a>
@@ -497,6 +565,33 @@ export default function HomeClient({ products, storeData }: Props) {
                         </svg>
                       </a>
                     </div>
+                  </div>
+                  <div className="zn-create-combo-btn-wrapper">
+                    <a href={detoxBannerHref} className="zn-create-combo-btn">
+                      Create Combo
+                      <svg
+                        width="15"
+                        height="13"
+                        viewBox="0 0 15 13"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13.9998 6.19656L1 6.19656"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8.75674 0.975394L14 6.19613L8.75674 11.4177"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -548,7 +643,7 @@ export default function HomeClient({ products, storeData }: Props) {
                             className="zn-reel-card"
                             onMouseEnter={(e) => {
                               const video = e.currentTarget.querySelector("video");
-                              if (video) video.play().catch(() => {});
+                              if (video) video.play().catch(() => { });
                             }}
                             onMouseLeave={(e) => {
                               const video = e.currentTarget.querySelector("video");
@@ -558,7 +653,7 @@ export default function HomeClient({ products, storeData }: Props) {
                               const video = e.currentTarget.querySelector("video");
                               if (video) {
                                 if (video.paused) {
-                                  video.play().catch(() => {});
+                                  video.play().catch(() => { });
                                 } else {
                                   video.pause();
                                 }
@@ -577,7 +672,7 @@ export default function HomeClient({ products, storeData }: Props) {
                               <div className="zn-reel-overlay">
                                 <div className="zn-reel-overlay-icon">
                                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#ff6b00"/>
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="#ff6b00" />
                                   </svg>
                                 </div>
                                 <div className="zn-reel-overlay-text">

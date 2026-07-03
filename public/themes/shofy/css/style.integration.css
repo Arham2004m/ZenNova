@@ -408,6 +408,7 @@ li {
     0% {
         transform: translate3d(0, 0, 0);
     }
+
     100% {
         transform: translate3d(-50%, 0, 0);
     }
@@ -417,7 +418,7 @@ li {
 .tp-slider-area .tp-slider-thumb img {
     width: 100% !important;
     height: 510px !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
 }
 
 @media (max-width: 767px) {
@@ -430,6 +431,7 @@ li {
 .tp-header-search-box {
     width: 100% !important;
 }
+
 .tp-header-search-box input {
     padding-right: 75px !important;
 }
