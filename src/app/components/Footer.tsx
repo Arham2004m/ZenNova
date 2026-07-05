@@ -4,17 +4,17 @@ import { getFrontend } from "@/lib/api";
 
 export default async function Footer() {
   let copyright = "© 2026 All Rights Reserved.";
-  let phone = "+670 413 90 762";
-  let email = "support@zennova.com";
-  let address = "79 Sleepy Hollow St. Jamaica, New York 1432";
+  let phone = "+91 76672 30620";
+  let email = "zennovapvt@gmail.com";
+  let address = "BYE PASS ROAD, Manjhiladih Road, Near Hanuman mandir, Kolakusma, Dhanbad, Jharkhand - 828109";
   try {
     const data = await getFrontend();
-const footer = data?.customization?.footerContent;
-const contact = data?.customization?.contactInfo;
-const copyright = footer?.copyright || "© 2026 All Rights Reserved.";
-const phone = contact?.phone || "+670 413 90 762";
-const email = contact?.email || "support@zennova.com";
-const address = contact?.address || "";
+    const footer = data?.customization?.footerContent;
+    const contact = data?.customization?.contactInfo;
+    if (footer?.copyright) copyright = footer.copyright;
+    if (contact?.phone) phone = contact.phone;
+    if (contact?.email) email = contact.email;
+    if (contact?.address) address = contact.address;
   } catch {}
   return (
     <>
@@ -363,6 +363,30 @@ const address = contact?.address || "";
             </div>
         </div>
     </footer>
+    <div className="evoclabs-powered-by" style={{
+        backgroundColor: '#000000',
+        padding: '20px 0 25px',
+        textAlign: 'center',
+        borderTop: '1px solid rgba(255, 255, 255, 0.08)'
+    }}>
+        <a href="https://evoclabs.com" target="_blank" rel="noopener noreferrer" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontSize: '14px',
+            fontWeight: 500,
+            color: 'rgba(255, 255, 255, 0.65)',
+            textDecoration: 'none',
+            transition: 'all 0.3s ease'
+        }}
+        >
+            <span>Powered by</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00A3FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle' }}>
+                <path d="M12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7H5" />
+            </svg>
+            <span style={{ fontWeight: 'bold', color: '#00A3FF' }}>EvocLabs</span>
+        </a>
+    </div>
     </>
   );
 }

@@ -4547,3 +4547,78 @@ body.zn-bundle-route .js-sale-popup-container {
     margin-left: auto;
   }
 }
+
+/* Newsletter Section Size & Layout Overrides */
+.tp-subscribe-area {
+  padding-top: 32px !important;
+  padding-bottom: 28px !important;
+}
+
+.tp-subscribe-area .container {
+  max-width: 980px !important;
+}
+
+.tp-subscribe-title {
+  font-size: 28px !important;
+  letter-spacing: -0.02em;
+}
+
+.tp-subscribe-content span {
+  font-size: 13px !important;
+}
+
+.tp-subscribe-form {
+  max-width: 360px !important;
+  margin-left: auto;
+}
+
+.tp-subscribe-input input {
+  height: 46px !important;
+  font-size: 14px !important;
+  padding-right: 120px !important;
+  border-radius: 6px !important;
+}
+
+.tp-subscribe-input button {
+  height: 46px !important;
+  padding: 0 25px !important;
+  font-size: 13px !important;
+  border-radius: 0 6px 6px 0 !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991px) {
+  .tp-subscribe-form {
+    max-width: 100% !important;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .tp-subscribe-area {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+  }
+  
+  .tp-subscribe-title {
+    font-size: 22px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .tp-subscribe-input input {
+    padding-right: 15px !important;
+    border-radius: 6px !important;
+  }
+  
+  .tp-subscribe-input button {
+    position: relative !important;
+    top: 10px !important;
+    width: 100% !important;
+    border-radius: 6px !important;
+  }
+}
+
+/* Powered by EvocLabs link hover style */
+.evoclabs-powered-by a:hover {
+  color: #ffffff !important;
+}

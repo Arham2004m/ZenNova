@@ -30,26 +30,26 @@ export default async function Contact() {
                 <div className="zn-contact-info-block">
                   <span className="zn-contact-info-label">Our Location</span>
                   <a
-                    href="https://maps.google.com/?q=79 Sleepy Hollow St. Jamaica, New York 1432"
+                    href="https://maps.google.com/?q=BYE%20PASS%20ROAD,%20Manjhiladih%20Road,%20Near%20Hanuman%20mandir,%20Kolakusma,%20Dhanbad,%20Jharkhand%20828109"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="zn-contact-info-value"
                   >
-                    79 Sleepy Hollow St. Jamaica, New York 1432
+                    BYE PASS ROAD, Manjhiladih Road, Near Hanuman mandir, Kolakusma, Dhanbad, Jharkhand - 828109
                   </a>
                 </div>
 
                 <div className="zn-contact-info-block">
                   <span className="zn-contact-info-label">Call Us</span>
-                  <a href="tel:+67041390762" className="zn-contact-info-value zn-contact-info-value--strong">
-                    +670 413 90 762
+                  <a href="tel:+917667230620" className="zn-contact-info-value zn-contact-info-value--strong">
+                    +91 76672 30620
                   </a>
                 </div>
 
                 <div className="zn-contact-info-block">
                   <span className="zn-contact-info-label">Email Address</span>
-                  <a href="mailto:support@shofy.com" className="zn-contact-info-value">
-                    support@shofy.com
+                  <a href="mailto:zennovapvt@gmail.com" className="zn-contact-info-value">
+                    zennovapvt@gmail.com
                   </a>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default async function Contact() {
             <div className="col-12">
               <div className="zn-map-wrapper">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.067307998638!2d144.99615967675122!3d-37.90547077195431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad668b5a0cf0757%3A0xe54e603e83fdf1b!2s502%20New%20St%2C%20Brighton%20VIC%203186%2C%20Australia!5e0!3m2!1sen!2sin!4v1719520000000!5m2!1sen!2sin"
+                  src="https://maps.google.com/maps?q=BYE%20PASS%20ROAD,%20Manjhiladih%20Road,%20Near%20Hanuman%20mandir,%20Kolakusma,%20Dhanbad,%20Jharkhand%20828109&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="450"
                   style={{ border: 0, display: "block" }}

@@ -32,7 +32,7 @@ const FAQS = [
   {
     question: "How do I track my order or contact support?",
     answer:
-      "After placing an order, use the tracking link in your confirmation email or visit your account dashboard under Orders. For help with products, returns, or bulk orders, email support@shofy.com or call +670 413 90 762. Our team typically responds within 24 hours on business days.",
+      "After placing an order, use the tracking link in your confirmation email or visit your account dashboard under Orders. For help with products, returns, or bulk orders, email zennovapvt@gmail.com or call +91 76672 30620. Our team typically responds within 24 hours on business days.",
   },
 ];
 

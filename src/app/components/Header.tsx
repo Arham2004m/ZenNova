@@ -72,7 +72,7 @@ export default async function Header() {
                 <div className="mb-40 tp-main-menu-mobile fix d-xl-none"></div>
 
                 <div className="offcanvas__btn">
-                    <a href="tel:8 800 332 65-66" className="tp-btn-2 tp-btn-border-2">
+                    <a href="tel:+917667230620" className="tp-btn-2 tp-btn-border-2">
                         Contact Us
                     </a>
                 </div>
@@ -572,8 +572,8 @@ export default async function Header() {
                                     <div className="tp-header-contact-content">
                                         <h5>Hotline:</h5>
                                         <p>
-                                            <a href="tel:8 800 332 65-66">
-                                                8 800 332 65-66
+                                            <a href="tel:+917667230620">
+                                                +91 76672 30620
                                             </a>
                                         </p>
                                     </div>
