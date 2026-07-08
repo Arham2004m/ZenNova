@@ -467,7 +467,7 @@ export default async function Header() {
                             </a>
 
                                             </li>
-                                            <li className="">
+                                            {/* <li className="">
                                                 <a href="/blog?layout=grid" title="Offers">
                 <svg className="icon me-1 svg-icon-ti-ti-basket-discount"
   xmlns="http://www.w3.org/2000/svg"
@@ -494,7 +494,7 @@ export default async function Header() {
 
                             </a>
 
-                                            </li>
+                                            </li> */}
                                             <li className="">
                                                 <a href="/contact" title="About Us">
                 <svg className="icon me-1 svg-icon-ti-ti-user-circle"
@@ -651,7 +651,7 @@ export default async function Header() {
                             </a>
 
                                     </li>
-                                    <li className="">
+                                    {/* <li className="">
                                         <a href="/blog?layout=grid" title="Offers">
                 <svg className="icon me-1 svg-icon-ti-ti-basket-discount"
   xmlns="http://www.w3.org/2000/svg"
@@ -678,7 +678,7 @@ export default async function Header() {
 
                             </a>
 
-                                    </li>
+                                    </li> */}
                                     <li className="">
                                         <a href="/contact" title="About Us">
                 <svg className="icon me-1 svg-icon-ti-ti-user-circle"
