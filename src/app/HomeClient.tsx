@@ -430,14 +430,16 @@ export default function HomeClient({ products, storeData }: Props) {
         <div className="zn-announcement-bar-wrapper">
           <div className="zn-announcement-bar-content">
             <div className="zn-announcement-bar-item">
-              <span>🎁 Buy 1 Get 1 Free on selected summer apparel!</span>
-              <span>🔥 FLASH SALE: 20% OFF all electronics! Use code: FLASH20</span>
-              <span>🚚 Free shipping on all orders over $50! Shop Now</span>
+              <span>🔥 Create your own combo & get upto 60% off</span>
+              <span>🚚 Buy above ₹ 499 to get ₹100 off</span>
+              <span>🔥 Create your own combo & get upto 60% off</span>
+              <span>🚚 Buy above ₹ 499 to get ₹100 off</span>
             </div>
             <div className="zn-announcement-bar-item">
-              <span>🎁 Buy 1 Get 1 Free on selected summer apparel!</span>
-              <span>🔥 FLASH SALE: 20% OFF all electronics! Use code: FLASH20</span>
-              <span>🚚 Free shipping on all orders over $50! Shop Now</span>
+              <span>🔥 Create your own combo & get upto 60% off</span>
+              <span>🚚 Buy above ₹ 499 to get ₹100 off</span>
+              <span>🔥 Create your own combo & get upto 60% off</span>
+              <span>🚚 Buy above ₹ 499 to get ₹100 off</span>
             </div>
           </div>
         </div>
