@@ -24,6 +24,7 @@ export default function ProductImagesGallery({ images = [], name }: Props) {
           slidesPerView: 1,
           spaceBetween: 10,
           loop: true,
+          autoHeight: true, // Automatically adjusts container height to active slide image
           navigation: {
             nextEl: ".zn-gallery-next",
             prevEl: ".zn-gallery-prev",
@@ -46,31 +47,31 @@ export default function ProductImagesGallery({ images = [], name }: Props) {
 
   if (cleanImages.length === 0) {
     return (
-      <div className="tp-product-details-large-img bg-dark rounded overflow-hidden">
-        <img src="/storage/logot.webp" alt={name} className="w-100" style={{ maxHeight: "600px", objectFit: "contain" }} />
+      <div className="tp-product-details-large-img rounded overflow-hidden" style={{ background: "transparent" }}>
+        <img src="/storage/logot.webp" alt={name} className="w-100" style={{ maxHeight: "500px", objectFit: "contain", height: "auto" }} />
       </div>
     );
   }
 
   if (cleanImages.length === 1) {
     return (
-      <div className="tp-product-details-large-img bg-dark rounded overflow-hidden">
-        <img src={cleanImages[0]} alt={name} className="w-100" style={{ maxHeight: "600px", objectFit: "contain" }} />
+      <div className="tp-product-details-large-img rounded overflow-hidden" style={{ background: "transparent" }}>
+        <img src={cleanImages[0]} alt={name} className="w-100" style={{ maxHeight: "500px", objectFit: "contain", height: "auto" }} />
       </div>
     );
   }
 
   return (
     <div className="zn-product-gallery-container relative">
-      <div className="swiper-container zn-product-details-gallery bg-dark rounded overflow-hidden" style={{ position: "relative" }}>
-        <div className="swiper-wrapper">
+      <div className="swiper-container zn-product-details-gallery rounded overflow-hidden" style={{ position: "relative", background: "transparent" }}>
+        <div className="swiper-wrapper" style={{ display: "flex", alignItems: "center" }}>
           {cleanImages.map((img, index) => (
-            <div className="swiper-slide text-center" key={index}>
+            <div className="swiper-slide text-center" key={index} style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
               <img
                 src={img}
                 alt={`${name} - Image ${index + 1}`}
                 className="w-100"
-                style={{ maxHeight: "600px", objectFit: "contain" }}
+                style={{ maxHeight: "500px", objectFit: "contain", height: "auto" }}
               />
             </div>
           ))}
@@ -80,7 +81,7 @@ export default function ProductImagesGallery({ images = [], name }: Props) {
         <button
           type="button"
           className="zn-gallery-prev btn position-absolute top-50 start-0 translate-middle-y z-3 text-white"
-          style={{ backgroundColor: "rgba(0,0,0,0.5)", border: "none", borderRadius: "50%", width: "40px", height: "40px", marginLeft: "15px" }}
+          style={{ backgroundColor: "rgba(0,0,0,0.4)", border: "none", borderRadius: "50%", width: "40px", height: "40px", marginLeft: "15px" }}
           aria-label="Previous image"
         >
           ❮
@@ -88,7 +89,7 @@ export default function ProductImagesGallery({ images = [], name }: Props) {
         <button
           type="button"
           className="zn-gallery-next btn position-absolute top-50 end-0 translate-middle-y z-3 text-white"
-          style={{ backgroundColor: "rgba(0,0,0,0.5)", border: "none", borderRadius: "50%", width: "40px", height: "40px", marginRight: "15px" }}
+          style={{ backgroundColor: "rgba(0,0,0,0.4)", border: "none", borderRadius: "50%", width: "40px", height: "40px", marginRight: "15px" }}
           aria-label="Next image"
         >
           ❯
@@ -113,6 +114,20 @@ export default function ProductImagesGallery({ images = [], name }: Props) {
           background: #f37324 !important;
           width: 10px;
           height: 10px;
+        }
+        .zn-product-details-gallery .swiper-slide img {
+          max-height: 500px;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+        @media (max-width: 767px) {
+          .zn-product-details-gallery .swiper-slide img {
+            max-height: 380px !important;
+          }
+          .tp-product-details-large-img img {
+            max-height: 380px !important;
+          }
         }
       `}} />
     </div>
