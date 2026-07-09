@@ -103,7 +103,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           .whatsapp-float {
             position: fixed;
             bottom: 30px;
-            right: 30px;
+            left: 30px;
             width: 60px;
             height: 60px;
             background-color: #25d366;
@@ -134,7 +134,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               width: 50px;
               height: 50px;
               bottom: 20px;
-              right: 20px;
+              left: 20px;
             }
             .whatsapp-float svg {
               width: 28px;
