@@ -128,7 +128,7 @@ const indianStates = [
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { cart, total, subtotal, clearCart } = useCartContext();
+  const { cart, total, subtotal, clearCart, loading } = useCartContext();
 
   const [step, setStep] = useState<Step>("identify");
   const [phone, setPhone] = useState("");
@@ -541,6 +541,14 @@ export default function CheckoutPage() {
       setSubmitting(false);
     }
   };
+
+  if (loading) {
+    return (
+      <main className="checkout" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "80vh" }}>
+        <LoaderIcon className="animate-spin" />
+      </main>
+    );
+  }
 
   if (cart.length === 0 && step !== "success") {
     return (

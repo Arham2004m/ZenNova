@@ -18,12 +18,14 @@ type CartContextValue = {
   removeItem: (index: number) => void;
   clearCart: () => void;
   refreshCart: () => void;
+  loading: boolean;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const refreshCart = useCallback(async () => {
     try {
@@ -66,6 +68,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }
     } catch (e) {
       console.error("Failed to sync cart cookie with state:", e);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -93,6 +97,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     async (item: CartItem) => {
       if (item.type === "PRODUCT") {
         try {
+          setLoading(true);
           const res = await fetch("/ajax/cart-content", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -107,6 +112,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           }
         } catch (e) {
           console.error(e);
+          setLoading(false);
         }
       }
     },
@@ -116,12 +122,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const removeItem = useCallback(
     async (index: number) => {
       try {
+        setLoading(true);
         const res = await fetch(`/ajax/cart-content?remove_index=${index}`);
         if (res.ok) {
           refreshCart();
         }
       } catch (e) {
         console.error(e);
+        setLoading(false);
       }
     },
     [refreshCart]
@@ -129,12 +137,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = useCallback(async () => {
     try {
+      setLoading(true);
       const res = await fetch("/ajax/cart-content?clear=true");
       if (res.ok) {
         setCart([]);
       }
     } catch (e) {
       console.error(e);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -148,8 +159,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       removeItem,
       clearCart,
       refreshCart,
+      loading,
     }),
-    [cart, addItem, removeItem, clearCart, refreshCart]
+    [cart, addItem, removeItem, clearCart, refreshCart, loading]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
