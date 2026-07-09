@@ -10,17 +10,17 @@ export const CATEGORY_SLUG_MAP: Record<
   { title: string; matchers: string[] }
 > = {
   "all-supplements": { title: "All Supplements", matchers: [] },
-  fragrance: { title: "Perfumes", matchers: ["perfumes", "fragrance"] },
+  fragrance: { title: "Perfume", matchers: ["perfumes", "fragrance", "perfume", "fragrances"] },
   face: { title: "Face", matchers: ["face"] },
-  body: { title: "Body", matchers: ["body"] },
+  body: { title: "Detox & Reset", matchers: ["body", "detox-&-reset", "detox-and-reset", "detox-reset", "detox", "detox & reset", "detox and reset"] },
   hair: { title: "Hair", matchers: ["hair"] },
   fitness: {
     title: "Testosterone Booster",
-    matchers: ["fitness", "testosterone-booster"],
+    matchers: ["fitness", "testosterone-booster", "testosterone booster", "testosterone"],
   },
   "weight-management": {
-    title: "Body Care",
-    matchers: ["weight-management", "body-care"],
+    title: "Fitness & Daily Care",
+    matchers: ["weight-management", "body-care", "fitness-&-daily-care", "fitness-and-daily-care", "fitness & daily care", "fitness and daily care", "body care"],
   },
 };
 
