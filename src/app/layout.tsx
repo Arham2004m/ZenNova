@@ -133,9 +133,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             .whatsapp-float {
               width: 50px;
               height: 50px;
-              bottom: 145px; /* Floats safely above the sticky mobile navigation bar and slider arrows */
-              right: 20px;
-              left: auto;
+              bottom: 95px; /* Sits cleanly above the sticky bottom navigation bar */
+              left: 20px;
+              right: auto;
             }
             .whatsapp-float svg {
               width: 28px;
