@@ -163,6 +163,21 @@ export default function CheckoutPage() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [placedOrderId, setPlacedOrderId] = useState<string | null>(null);
 
+  // ── Coupon / Discount state ──
+  const [couponInput, setCouponInput] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState<{
+    code: string;
+    type: "PERCENTAGE" | "FIXED";
+    value: number;
+    discountAmount: number;
+  } | null>(null);
+  const [couponLoading, setCouponLoading] = useState(false);
+  const [couponError, setCouponError] = useState<string | null>(null);
+  const [couponSuccess, setCouponSuccess] = useState<string | null>(null);
+
+  const discountAmount = appliedCoupon ? appliedCoupon.discountAmount : 0;
+  const discountedTotal = Math.max(0, total - discountAmount);
+
   const codFee = 40;
 
   useEffect(() => {
@@ -391,6 +406,53 @@ export default function CheckoutPage() {
     setStep("payment");
   };
 
+  const handleApplyCoupon = async () => {
+    const code = couponInput.trim().toUpperCase();
+    if (!code) return;
+    setCouponLoading(true);
+    setCouponError(null);
+    setCouponSuccess(null);
+    setAppliedCoupon(null);
+    try {
+      const res = await fetch("/api/coupons/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code, orderTotal: total }),
+      });
+      const json = await res.json();
+      if (!res.ok || !json.success) {
+        setCouponError(json.message || "Invalid coupon code");
+        return;
+      }
+      // Calculate discount amount
+      let discountAmt = 0;
+      const couponType: "PERCENTAGE" | "FIXED" = json.type || "PERCENTAGE";
+      const couponValue: number = Number(json.value) || 0;
+      if (couponType === "PERCENTAGE") {
+        discountAmt = Math.round((total * couponValue) / 100);
+      } else {
+        discountAmt = Math.min(couponValue, total);
+      }
+      setAppliedCoupon({ code, type: couponType, value: couponValue, discountAmount: discountAmt });
+      setCouponSuccess(
+        couponType === "PERCENTAGE"
+          ? `Coupon applied! ${couponValue}% off — You save ₹${formatPrice(discountAmt)}`
+          : `Coupon applied! ₹${formatPrice(discountAmt)} off`
+      );
+    } catch {
+      setCouponError("Failed to apply coupon. Please try again.");
+    } finally {
+      setCouponLoading(false);
+    }
+  };
+
+  const handleRemoveCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponInput("");
+    setCouponError(null);
+    setCouponSuccess(null);
+  };
+
   const handlePlaceOrder = async (method: "cod" | "payu") => {
     setSubmitting(true);
     setError(null);
@@ -444,7 +506,7 @@ export default function CheckoutPage() {
         const productinfo = cart.map(item => item.type === "PRODUCT" ? item.name : item.title).join(", ").slice(0, 100) || "Store Purchase";
         const payuResult = await initiatePayUPayment({
           orderId: result.orderId,
-          amount: total,
+          amount: discountedTotal,
           firstName: customerFirstName,
           email: customerEmail,
           phone,
@@ -918,7 +980,7 @@ export default function CheckoutPage() {
                           {submitting ? (
                             <LoaderIcon className="animate-spin" />
                           ) : (
-                            `PLACE ORDER · ₹${formatPrice(total + codFee)}`
+                            `PLACE ORDER · ₹${formatPrice(discountedTotal + codFee)}`
                           )}
                         </button>
                       </div>
@@ -947,7 +1009,7 @@ export default function CheckoutPage() {
                           {submitting ? (
                             <LoaderIcon className="animate-spin" />
                           ) : (
-                            `PAY NOW · ₹${formatPrice(total)}`
+                            `PAY NOW · ₹${formatPrice(discountedTotal)}`
                           )}
                         </button>
                       </div>
@@ -989,11 +1051,64 @@ export default function CheckoutPage() {
             })}
           </div>
 
+          {/* Coupon Input Section */}
+          <div className="checkout__coupon-section">
+            {!appliedCoupon ? (
+              <div className="checkout__coupon-input-row">
+                <input
+                  type="text"
+                  className="checkout__coupon-input"
+                  placeholder="Enter coupon code"
+                  value={couponInput}
+                  onChange={(e) => {
+                    setCouponInput(e.target.value.toUpperCase());
+                    setCouponError(null);
+                  }}
+                  onKeyDown={(e) => e.key === "Enter" && handleApplyCoupon()}
+                  disabled={couponLoading}
+                />
+                <button
+                  type="button"
+                  className="checkout__coupon-apply-btn"
+                  onClick={handleApplyCoupon}
+                  disabled={couponLoading || !couponInput.trim()}
+                >
+                  {couponLoading ? <LoaderIcon className="animate-spin" /> : "Apply"}
+                </button>
+              </div>
+            ) : (
+              <div className="checkout__coupon-applied">
+                <span className="checkout__coupon-tag">
+                  🏷️ {appliedCoupon.code}
+                  {appliedCoupon.type === "PERCENTAGE"
+                    ? ` (${appliedCoupon.value}% OFF)`
+                    : ` (₹${formatPrice(appliedCoupon.value)} OFF)`}
+                </span>
+                <button
+                  type="button"
+                  className="checkout__coupon-remove"
+                  onClick={handleRemoveCoupon}
+                >
+                  ✕ Remove
+                </button>
+              </div>
+            )}
+            {couponError && <p className="checkout__coupon-msg checkout__coupon-msg--error">{couponError}</p>}
+            {couponSuccess && <p className="checkout__coupon-msg checkout__coupon-msg--success">{couponSuccess}</p>}
+          </div>
+
           <div className="checkout__summary-totals">
             <div className="checkout__summary-row">
               <span>Subtotal</span>
               <span className="text-white">₹{formatPrice(subtotal)}</span>
             </div>
+
+            {appliedCoupon && (
+              <div className="checkout__summary-row checkout__summary-row--discount">
+                <span>Discount ({appliedCoupon.code})</span>
+                <span className="checkout__discount-value">−₹{formatPrice(discountAmount)}</span>
+              </div>
+            )}
 
             {paymentMethod === "cod" && (
               <div className="checkout__summary-row">
@@ -1004,7 +1119,7 @@ export default function CheckoutPage() {
 
             <div className="checkout__summary-row checkout__summary-row--total">
               <span>Total</span>
-              <span>₹{formatPrice(paymentMethod === "cod" ? total + codFee : total)}</span>
+              <span>₹{formatPrice(paymentMethod === "cod" ? discountedTotal + codFee : discountedTotal)}</span>
             </div>
           </div>
         </aside>
