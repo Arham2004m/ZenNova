@@ -1,4 +1,4 @@
-import { getFrontend } from "@/lib/api";
+import { getFrontend, getProducts } from "@/lib/api";
 import BundleOfferClient from "./BundleOfferClient";
 import type { BundleOffer } from "@/components/Bundle/types";
 
@@ -18,7 +18,10 @@ function getBundlePageBanner(storeData: { customization?: { bannersSection?: { b
 }
 
 export default async function BundlePage() {
-  const storeData = await getFrontend();
+  const [storeData, allProducts] = await Promise.all([
+    getFrontend(),
+    getProducts()
+  ]);
   const bundles = (storeData?.bundles || []) as BundleOffer[];
   const activeBundle = bundles.find((bundle) => bundle.isActive);
   const bundleBanner = getBundlePageBanner(storeData);
@@ -36,6 +39,20 @@ export default async function BundlePage() {
     );
   }
 
+  // Populate active bundle with all active store products
+  const activeProducts = (allProducts || []).filter((p: any) => p.isActive !== false);
+  activeBundle.selectedProducts = activeProducts.map((p: any) => ({
+    id: p.id,
+    name: p.name,
+    slug: p.slug,
+    price: Number(p.price),
+    compareAtPrice: p.compareAtPrice ? Number(p.compareAtPrice) : null,
+    images: p.images || [],
+    category: p.category,
+    stock: p.stock,
+    isActive: p.isActive,
+  }));
+
   return (
     <BundleOfferClient
       bundle={activeBundle}
@@ -43,3 +60,4 @@ export default async function BundlePage() {
     />
   );
 }
+
