@@ -97,6 +97,51 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           window.siteUrl = "";
           window.currencies = JSON.parse('{"display_big_money":false,"billion":"billion","million":"million","is_prefix_symbol":true,"symbol":"\\\\u20b9","title":"INR","decimal_separator":".","thousands_separator":",","number_after_dot":0,"show_symbol_or_title":true}');
         `}} />
+        
+        {/* Floating WhatsApp Logo Styles */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+          }
+          .whatsapp-float:hover {
+            transform: scale(1.08);
+            background-color: #128c7e;
+            color: #fff;
+          }
+          .whatsapp-float svg {
+            width: 34px;
+            height: 34px;
+            fill: currentColor;
+            display: block;
+          }
+          @media (max-width: 767px) {
+            .whatsapp-float {
+              width: 50px;
+              height: 50px;
+              bottom: 20px;
+              right: 20px;
+            }
+            .whatsapp-float svg {
+              width: 28px;
+              height: 28px;
+            }
+          }
+        `}} />
       </head>
 
       <body id="page-home">
@@ -109,6 +154,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Modals />
         <CartBridge />
         <SearchBridge />
+        
+        {/* Floating WhatsApp Button */}
+        <a
+          href="https://wa.me/917482836500"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-float"
+          aria-label="Contact us on WhatsApp"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.453L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97-1.861-1.868-4.339-2.897-6.97-2.899-5.437 0-9.862 4.37-9.866 9.801-.001 1.698.448 3.354 1.3 4.8l-.999 3.648 3.731-.981zm11.367-7.223c-.32-.16-1.89-.933-2.185-1.041-.295-.108-.51-.16-.723.16-.213.32-.823 1.041-1.008 1.256-.185.215-.37.242-.69.082-1.748-.874-2.909-1.45-4.068-3.442-.303-.521.303-.483.868-1.61.093-.186.046-.349-.023-.483-.069-.134-.51-1.256-.7-1.702-.186-.447-.373-.387-.512-.394-.132-.007-.284-.008-.436-.008a.837.837 0 0 0-.606.282c-.207.228-.79.772-.79 1.88 0 1.11.8 2.18.91 2.336.112.156 1.58 2.48 3.826 3.453 1.88.817 2.263.655 3.076.578.817-.077 1.89-.77 2.158-1.479.266-.708.266-1.314.188-1.443-.078-.129-.285-.209-.606-.369z" />
+          </svg>
+        </a>
         </CartProvider>
 
         {/* Client-side JavaScript assets loaded in correct sequence */}
