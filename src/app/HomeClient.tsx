@@ -6,6 +6,31 @@ import type { Product } from "@/types/product";
 import ProductCard from "./components/products/ProductCard";
 import DealOfTheDaySection from "./components/products/DealOfTheDaySection";
 import CustomerReviewsSection from "./components/products/CustomerReviewsSection";
+import { getProductCategorySlug } from "@/lib/category-slugs";
+
+const STATIC_CATEGORIES = [
+  {
+    title: "Detox & Reset",
+    slug: "body",
+    image: "/categories/detox.jpeg",
+  },
+  {
+    title: "Fitness & Daily Care",
+    slug: "weight-management",
+    image: "/categories/fitness.jpeg",
+  },
+  {
+    title: "Testosterone Booster",
+    slug: "fitness",
+    image: "/categories/testosterone.jpeg",
+  },
+  {
+    title: "Perfume",
+    slug: "fragrance",
+    image: "/categories/perfume.jpeg",
+  },
+];
+
 type Props = {
   products: Product[];
   storeData: any;
@@ -82,7 +107,7 @@ export default function HomeClient({ products, storeData }: Props) {
         });
 
         new (window as any).Swiper(".tp-product-categories-slider", {
-          slidesPerView: 5,
+          slidesPerView: 4,
           spaceBetween: 20,
           loop: false,
           autoplay: {
@@ -90,7 +115,7 @@ export default function HomeClient({ products, storeData }: Props) {
             disableOnInteraction: false,
           },
           breakpoints: {
-            1200: { slidesPerView: 5 },
+            1200: { slidesPerView: 4 },
             992: { slidesPerView: 4 },
             768: { slidesPerView: 3 },
             420: { slidesPerView: 2 },
@@ -421,30 +446,35 @@ export default function HomeClient({ products, storeData }: Props) {
           <div className="container">
             <div className="tp-product-categories-slider swiper-container">
               <div className="swiper-wrapper">
-                {(uniqueCategories).map((cat: string) => {
-                  const count = products.filter((p) => p.category === cat).length;
-                  const image =
-                    storeData?.customization?.categoryImages?.[cat.toLowerCase()];
-                  const slug = cat.toLowerCase().trim().replace(/\s+/g, "-");
+                {STATIC_CATEGORIES.map((catItem) => {
+                  const count = products.filter((p) => {
+                    const pSlug = getProductCategorySlug(p.category || "");
+                    return pSlug === catItem.slug;
+                  }).length;
 
                   return (
-                    <div className="swiper-slide" key={slug}>
+                    <div className="swiper-slide" key={catItem.slug}>
                       <div className="tp-product-category-item text-center mb-40">
-                        <div className="tp-product-category-thumb fix">
+                        <div className="tp-product-category-thumb fix d-flex align-items-center justify-content-center" style={{ width: "160px", height: "160px", borderRadius: "50%", overflow: "hidden", margin: "0 auto 15px auto", border: "3px solid #222", background: "#111" }}>
                           <a
-                            href={`/product-categories/${slug}`}
-                            title={cat}
+                            href={`/product-categories/${catItem.slug}`}
+                            title={catItem.title}
+                            style={{ width: "100%", height: "100%", display: "block" }}
                           >
-                            {image && <img src={image} alt={cat} />}
+                            <img 
+                              src={catItem.image} 
+                              alt={catItem.title} 
+                              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} 
+                            />
                           </a>
                         </div>
                         <div className="tp-product-category-content">
-                          <h3 className="tp-product-category-title">
-                            <a href={`/product-categories/${slug}`}>
-                              {cat}
+                          <h3 className="tp-product-category-title" style={{ fontSize: "16px", fontWeight: "600" }}>
+                            <a href={`/product-categories/${catItem.slug}`}>
+                              {catItem.title}
                             </a>
                           </h3>
-                          <p>
+                          <p style={{ fontSize: "13px", color: "#888" }}>
                             {count} product{count !== 1 ? "s" : ""}
                           </p>
                         </div>
