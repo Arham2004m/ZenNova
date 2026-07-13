@@ -180,7 +180,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         
         {/* Floating WhatsApp Button */}
         <a
-          href="https://wa.me/917482836500"
+          href="https://wa.me/917667230620"
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-float"
