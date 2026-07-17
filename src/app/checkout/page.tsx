@@ -489,6 +489,7 @@ export default function CheckoutPage() {
           paymentMethod: method,
         },
         paymentMethod: method,
+        couponCode: appliedCoupon?.code || undefined,
       };
 
       const result = await createStoreOrder(payload);
